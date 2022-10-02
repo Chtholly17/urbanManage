@@ -52,7 +52,11 @@ Page({
     }
 
     const db = await getApp().database()
-    //在数据库中更新用户信息
+    在数据库中更新用户信息
+    回到list/index
+      wx.switchTab({
+        url: '../list/index',
+      })
     
   }
 })
