@@ -1,0 +1,43 @@
+<!-- <view>请填写以下信息：</view>
+<view>您的性别：</view>
+<button bindtap="Male">男</button>
+<button bindtap="Feale">女</button>
+<view>您的年龄：</view>
+<button bindtap="age_18_30">18～30岁</button>
+<button bindtap="age_31_45">31～45岁</button>
+<button bindtap="age_46_60">46～60岁</button>
+<button bindtap="age_60">60岁以上</button>
+<view>您所居住的小区：</view>
+<view class="container">
+  <button bindtap="showMap">定位</button>
+  <view>地址：{{address?address:"暂无"}}</view>
+</view>
+
+
+ -->
+
+<view class="container">
+  <form bindsubmit="submit">
+    <view>
+      <text>您的性别：</text>
+      <radio-group name="gender">
+        <label><radio value="0" checked/>男</label>
+        <label><radio value="1"/>女</label>
+      </radio-group>
+    </view>
+    <view>
+      <text>您的年龄：</text>
+      <textarea name="age" value="NULL" />
+    </view>
+    <view>
+      <text>您居住的小区：</text>
+      <button bindtap="showMap">定位</button>
+      <view style="margin-top:10px">地址：{{address?address:"NULL"}}</view>
+    </view>
+    <view>
+      <text>您居住的时间：</text>
+      <textarea name="living_time" value="NULL" />
+    </view>
+    <button form-type="submit">提交</button>
+  </form>
+</view>
