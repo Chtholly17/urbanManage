@@ -37,7 +37,7 @@ Page({
   },
   //保存用户信息
   async saveInfo(){
-    if(this.data.Community=""){
+    if(this.data.Community===""){
       wx.showToast({
         title: '小区名称未填写',
         icon: 'error',
@@ -56,18 +56,23 @@ Page({
     //在数据库中更新用户信息
     //获取openid
     this.data.openid = getApp().globalData.openid
-    console.log(this.data.openid)
+    //console.log(this.data.openid)
 
     db.collection('user').where({
       _openid: this.data.openid
-    }).set({
+    }).add({
       data: {
         Gender: this.data.Gen,
         Age: this.data.Age,
         Duartion: this.data.Duar,
         Community: this.data.Community
       }
+    }).then(() => {
+      wx.navigateBack({
+        delta: 0,
+      })
     })
 
+    console.log('success')
   }
 })
