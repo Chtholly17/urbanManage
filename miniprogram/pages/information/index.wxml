@@ -6,8 +6,8 @@
       <picker class="option" bindchange="onChooseGender" range="{{GenderOptions}}">
         {{GenOptions[Gen]}}
       </picker>
-      <picker class="option" bindchange="onChooseGender" range="{{GenderOptions}}">
-        {{GenOptions[Gen]}}
+      <picker class="selector" bindchange="onChooseGender" range="{{GenOptions}}">
+        <image class="selector" src="../../images/info/next.png" />
       </picker>
     </view>
     <view class="form-cell inline">
@@ -15,8 +15,8 @@
       <picker class="option" bindchange="onChooseAge" range="{{AgeOptions}}">
         {{AgeOptions[Age]}}
       </picker>
-      <picker class="option" bindchange="onChooseAge" range="{{AgeOptions}}">
-        {{AgeOptions[Age]}}
+      <picker class="selector" bindchange="onChooseAge" range="{{AgeOptions}}">
+        <image class="selector" src="../../images/info/next.png" />
       </picker>
     </view>
     <view class="form-cell inline">
@@ -24,8 +24,8 @@
       <picker class="option" bindchange="onChooseDuartion" range="{{DuarOptions}}">
         {{DuarOptions[Duar]}}
       </picker>
-      <picker class="option" bindchange="onChooseDuartion" range="{{DuarOptions}}">
-        {{DuarOptions[Duar]}}
+      <picker class="selector" bindchange="onChooseDuartion" range="{{DuarOptions}}">
+        <image class="selector" src="../../images/info/next.png" />
       </picker>
     </view>
     <view class="form-cell">
@@ -35,6 +35,7 @@
     </view>
   </view>
 </view>
+<view>
   <view class="footer">
     <view class="reset" bindtap="resetTodo">重置</view>
     <view class="save" bindtap="saveInfo">保存</view>
