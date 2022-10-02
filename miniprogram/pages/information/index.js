@@ -43,6 +43,7 @@ Page({
         icon: 'error',
         duration: 2000
       })
+      return
     }
     if(this.data.Community.length>50){
       wx.showToast({
@@ -50,6 +51,7 @@ Page({
         icon: 'error',
         duration: 2000
       })
+      return
     }
 
     const db = await getApp().database()
@@ -57,22 +59,41 @@ Page({
     //获取openid
     this.data.openid = getApp().globalData.openid
     //console.log(this.data.openid)
-
     db.collection('user').where({
       _openid: this.data.openid
-    }).add({
-      data: {
-        Gender: this.data.Gen,
-        Age: this.data.Age,
-        Duartion: this.data.Duar,
-        Community: this.data.Community
+    }).get({
+      success: res=> {
+        console.log(res.data)
+        let curId = res.data[0]._id
+        console.log(curId)
+        db.collection('user').doc(curId).update({
+          data: {
+            Gender: this.data.Gen,
+            Age: this.data.Age,
+            Duartion: this.data.Duar,
+            Community: this.data.Community
+          }  
+        })
+        wx.navigateBack({
+          delta: 0,
+        })
+      },
+      fail: err=>{
+        console.log('查询失败，添加新纪录')
+        db.collection('user').add({
+          data: {
+            Gender: this.data.Gen,
+            Age: this.data.Age,
+            Duartion: this.data.Duar,
+            Community: this.data.Community
+          }
+        })
+        wx.navigateBack({
+          delta: 0,
+        })
       }
-    }).then(() => {
-      wx.navigateBack({
-        delta: 0,
-      })
     })
 
-    console.log('success')
+    console.log('uplaod success')
   }
 })
