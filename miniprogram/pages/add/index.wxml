@@ -32,7 +32,7 @@
         {{freqOptions[freq]}}
       </picker>
       <picker class="selector" bindchange="onChooseFreq" range="{{freqOptions}}">
-        <image class="selector" src="../../images/add/next.png" />
+        <image class="selector" src="../../images/info/next.png" />
       </picker>
     </view>
   </view>
