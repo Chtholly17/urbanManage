@@ -41,6 +41,14 @@ Page({
         src: '../../images/list/trash.png'
       }],
     })
+
+    if (typeof this.getTabBar === 'function' && 
+      this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 0
+        })
+      }
+
   },
 
   // 响应左划按钮事件
