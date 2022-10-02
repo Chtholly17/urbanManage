@@ -50,7 +50,9 @@ Page({
         duration: 2000
       })
     }
-    
+
     const db = await getApp().database()
+    //在数据库中更新用户信息
+    
   }
 })
