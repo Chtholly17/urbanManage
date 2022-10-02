@@ -38,17 +38,37 @@ Page({
     }
   },
 
-  getUserInfo: function (e) {
-    this.setUserInfo(e.detail.userInfo);
-  },
+  // getUserInfo: function (e) {
+  //   this.setUserInfo(e.detail.userInfo);
+  // },
 
-  setUserInfo: function (userInfo) {
-    if (userInfo != null) {
-      app.globalData.userInfo = userInfo
+  // setUserInfo: function (userInfo) {
+  //   if (userInfo != null) {
+  //     app.globalData.userInfo = userInfo
+  //     this.setData({
+  //       userInfo: userInfo,
+  //       hasUserInfo: true
+  //     })
+  //   }
+  // }
+  getUserInfo: function(e) {
+    if (e.detail.userInfo) {
+      app.globalData.userInfo = e.detail.userInfo;
       this.setData({
-        userInfo: userInfo,
+        userInfo:e.detail.userInfo,
         hasUserInfo: true
       })
+      wx.setStorageSync("userinfo", e.detail.userInfo);
+      //回到list/index
+      // wx.switchTab({
+      //   url: '../list/index',
+      // })
     }
+  },
+
+  onLoad: function(options) {
+    var that = this;
+    var userInfo = wx.getStorageSync('userinfo');
+    var uname = userInfo.nickName;
   }
 })
