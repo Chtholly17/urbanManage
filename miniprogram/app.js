@@ -1,3 +1,5 @@
+//test = 1
+
 App({
   async onLaunch() {
     this.initcloud()

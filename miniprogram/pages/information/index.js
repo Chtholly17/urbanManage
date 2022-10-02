@@ -2,6 +2,7 @@
 
 Page({
   data:{
+    openid: "",
     Gen: 0,
     Age: 0,
     Duar: 0,
@@ -53,6 +54,25 @@ Page({
 
     const db = await getApp().database()
     //在数据库中更新用户信息
+    //获取openid
+    var that= this
+    wx.cloud.callFunction({
+      name: 'getOpenId'
+    }).then(res =>{
+      that.data.openid =res.result.openid
+      console.log(that.data.openid)
+    })
     
+    db.collection('user').where({
+      _openid: that.data.openid
+    }).set({
+      data: {
+        Gender: this.data.Gen,
+        Age: this.data.Age,
+        Duartion: this.data.Duar,
+        Community: this.data.Community
+      }
+    })
+
   }
 })
