@@ -8,8 +8,18 @@ App({
       // 用于存储待办记录的集合名称
       collection: 'todo',
       // 最大文件上传数量
-      fileLimit: 2
+      fileLimit: 3,
+      userInfo: null,
+      hasUserInfo: false,
+      openid: null
     }
+    var that = this;
+    wx.cloud.callFunction({
+      name: 'getOpenId'
+    }).then(res =>{
+      that.globalData.openid = res.result.openid
+      console.log(this.globalData.openid);
+    })
   },
 
   flag: false,

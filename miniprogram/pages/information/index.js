@@ -55,16 +55,11 @@ Page({
     const db = await getApp().database()
     //在数据库中更新用户信息
     //获取openid
-    var that= this
-    wx.cloud.callFunction({
-      name: 'getOpenId'
-    }).then(res =>{
-      that.data.openid =res.result.openid
-      console.log(that.data.openid)
-    })
-    
+    this.data.openid = getApp().globalData.openid
+    console.log(this.data.openid)
+
     db.collection('user').where({
-      _openid: that.data.openid
+      _openid: this.data.openid
     }).set({
       data: {
         Gender: this.data.Gen,

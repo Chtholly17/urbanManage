@@ -10,8 +10,8 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     menuitems: [
-      { text: '完善信息', url: '../information/index', icon: '../../images/icon-index.png', tips: '' },
-      { text: '个性设置', url: '../userinfo/userinfo', icon: '../../images/icon-index.png', tips: '' }
+      { text: '完善信息', url: '../information/index', icon: '/images/tabbar/user.png', tips: '' },
+      { text: '我的上传', url: '../userinfo/userinfo', icon: '../../images/icon-index.png', tips: '' }
     ]
   },
 
@@ -38,37 +38,32 @@ Page({
     }
   },
 
-  // getUserInfo: function (e) {
-  //   this.setUserInfo(e.detail.userInfo);
-  // },
-
-  // setUserInfo: function (userInfo) {
-  //   if (userInfo != null) {
-  //     app.globalData.userInfo = userInfo
-  //     this.setData({
-  //       userInfo: userInfo,
-  //       hasUserInfo: true
-  //     })
-  //   }
-  // }
-  getUserInfo: function(e) {
-    if (e.detail.userInfo) {
-      app.globalData.userInfo = e.detail.userInfo;
-      this.setData({
-        userInfo:e.detail.userInfo,
-        hasUserInfo: true
-      })
-      wx.setStorageSync("userinfo", e.detail.userInfo);
-      //回到list/index
-      // wx.switchTab({
-      //   url: '../list/index',
-      // })
-    }
+  getUserInfo: function (e) {
+    this.setUserInfo(e.detail.userInfo);
   },
 
-  onLoad: function(options) {
-    var that = this;
-    var userInfo = wx.getStorageSync('userinfo');
-    var uname = userInfo.nickName;
+  setUserInfo: function (userInfo) {
+    if (userInfo != null) {
+      app.globalData.userInfo = userInfo
+      app.globalData.hasUserInfo = true
+      this.setData({
+        userInfo: userInfo,
+        hasUserInfo: true
+      })
+    }
   }
+  // getUserInfo: function(e) {
+  //   if (e.detail.userInfo) {
+  //     app.globalData.userInfo = e.detail.userInfo;
+  //     this.setData({
+  //       userInfo:e.detail.userInfo,
+  //       hasUserInfo: true
+  //     })
+  //     wx.setStorageSync("userinfo", e.detail.userInfo);
+  //     //回到list/index
+  //     // wx.switchTab({
+  //     //   url: '../list/index',
+  //     // })
+  //   }
+  // }
 })
