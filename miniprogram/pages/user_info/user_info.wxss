@@ -46,12 +46,13 @@
 }
 
 .reset {
-  background: white;
+  color: white;
+  background: #353535;
 }
 
 .save {
-  color: white;
-  background: #353535;
+  color: black;
+  background: white
 }
 
 /* information wxss*/

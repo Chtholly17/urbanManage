@@ -18,7 +18,7 @@ App({
       name: 'getOpenId'
     }).then(res =>{
       that.globalData.openid = res.result.openid
-      console.log(this.globalData.openid);
+      //console.log(this.globalData.openid);
     })
   },
 

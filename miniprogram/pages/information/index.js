@@ -64,36 +64,46 @@ Page({
     }).get({
       success: res=> {
         console.log(res.data)
+        if(res.data.length==0){
+          console.log('添加新纪录')
+          db.collection('user').add({
+            data: {
+              Gender: this.data.Gen,
+              Age: this.data.Age,
+              Duartion: this.data.Duar,
+              Community: this.data.Community
+            }
+          })
+        }
+        else{
         let curId = res.data[0]._id
-        console.log(curId)
-        db.collection('user').doc(curId).update({
-          data: {
-            Gender: this.data.Gen,
-            Age: this.data.Age,
-            Duartion: this.data.Duar,
-            Community: this.data.Community
-          }  
-        })
+          console.log('修改当前记录')
+          db.collection('user').doc(curId).update({
+            data: {
+              Gender: this.data.Gen,
+              Age: this.data.Age,
+              Duartion: this.data.Duar,
+              Community: this.data.Community
+            }  
+          })
+        }
         wx.navigateBack({
           delta: 0,
         })
       },
       fail: err=>{
-        console.log('查询失败，添加新纪录')
-        db.collection('user').add({
-          data: {
-            Gender: this.data.Gen,
-            Age: this.data.Age,
-            Duartion: this.data.Duar,
-            Community: this.data.Community
-          }
-        })
-        wx.navigateBack({
-          delta: 0,
-        })
+        console.log('查询失败')
       }
     })
-
     console.log('uplaod success')
+  },
+
+  resetTodo(){
+    this.setData({
+      Gen: 0,
+      Age: 0,
+      Duar: 0,
+      Community: ''
+    })
   }
 })

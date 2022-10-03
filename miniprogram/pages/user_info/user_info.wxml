@@ -1,0 +1,27 @@
+<wxs module="util" src="../util.wxs" />
+<view class="container">
+  <view class="form-group">
+    <view class="form-cell">
+      <view class="form-cell_title">您的性别：</view>
+      <text class="content">{{Gender}}</text>
+    </view>
+    <view class="form-cell">
+      <view class="form-cell_title">您的年龄：</view>
+      <text class="content">{{Age}}</text>
+    </view>
+    <view class="form-cell">
+      <view class="form-cell_title">居住时间：</view>
+      <text class="content">{{Duartion}}</text>
+    </view>
+    <view class="form-cell">
+      <view class="form-cell_title">小区名称</view>
+      <text class="content">{{Community}}</text>
+    </view>
+  </view>
+</view>
+<view>
+  <view class="footer">
+    <view class="save" bindtap="return2User">返回</view>
+    <view class="reset" bindtap="resetInfo">信息修改</view>
+  </view>
+</view>
