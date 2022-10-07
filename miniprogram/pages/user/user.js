@@ -20,6 +20,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+
     if (app.globalData.userInfo) {
       that.setUserInfo(app.globalData.userInfo);
     } else if (that.data.canIUse) {
@@ -37,6 +38,18 @@ Page({
       })
     }
   },
+
+  onShow: function (options) {
+  },
+
+  login_showToast: function(options){
+    wx.showToast({
+      title: "请先登陆",
+      cancelColor: 'cancelColor',
+      icon: "none"
+    })
+  },
+
 
   getUserInfo: function (e) {
     this.setUserInfo(e.detail.userInfo);

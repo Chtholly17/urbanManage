@@ -1,11 +1,13 @@
 /* 待办列表首页 */
+const app = getApp();
 
 Page({
   // 存储请求结果
   data: {
     todos: [], // 用户的所有待办事项
     pending: [], // 未完成待办事项
-    finished: [] // 已完成待办事项
+    finished: [], // 已完成待办事项
+    hasUserInfo: false
   },
 
   onShow() {
@@ -48,7 +50,22 @@ Page({
           selected: 0
         })
       }
-
+      if (app.globalData.hasUserInfo == false) {
+        wx.showModal({
+          title: '请先登录',
+          icon: 'none',
+          success: function(res) {
+              if (res.confirm) {
+                wx.reLaunch({
+                  url: '../user/user',
+                })
+              }
+              else {
+                wx.exitMiniProgram({success: (res) => {}})
+              }
+          }
+        })
+      }
   },
 
   // 响应左划按钮事件

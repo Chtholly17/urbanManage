@@ -17,16 +17,30 @@
   <view class="list-wrapper">
     <view class="alllists">
       <block wx:for="{{menuitems}}" wx:key="item">
-        <navigator url="{{item.url}}" class="lists">
-          <view class='content'>
-            <view class="listimg">
-              <image src="{{item.icon}}"></image>
+        <block wx:if="{{hasUserInfo && canIUse}}">
+          <navigator url="{{item.url}}" class="lists">
+            <view class='content'>
+              <view class="listimg">
+                <image src="{{item.icon}}"></image>
+              </view>
+              <text class="listtext">{{item.text}}</text>
+              <text class="listicon">{{item.tips}}</text>
+              <text class='item-array'>></text>
             </view>
-            <text class="listtext">{{item.text}}</text>
-            <text class="listicon">{{item.tips}}</text>
-            <text class='item-array'>></text>
-          </view>
-        </navigator>
+          </navigator>
+        </block>
+        <block wx:else>
+          <navigator url="../user/user" class="lists" bindtap="login_showToast">
+            <view class='content'>
+              <view class="listimg">
+                <image src="{{item.icon}}"></image>
+              </view>
+              <text class="listtext">{{item.text}}</text>
+              <text class="listicon">{{item.tips}}</text>
+              <text class='item-array'>></text>
+            </view>
+          </navigator>
+        </block>
         <view class="div-line"></view>
       </block>
     </view>
