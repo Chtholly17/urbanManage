@@ -8,7 +8,7 @@
       </block>
       <block wx:else>
         <view class="userinfo">
-          <image style="border-radius: 90%;" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <image style="border-radius: 50%;" src="{{userInfo.avatarUrl}}" mode="cover"></image>
           <text class="userinfo-nickname">{{userInfo.nickName}}</text>
         </view>
       </block>
