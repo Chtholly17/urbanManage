@@ -1,0 +1,43 @@
+<wxs module="util" src="../util.wxs" />
+<view class="container">
+  <view class="form-group">
+    <view class="form-cell">
+      <view class="img-wrap">
+        <view class="form-cell_title">上传图片</view>
+        <view class="imglist">
+          <view class="item" wx:for="{{imgs}}" wx:key="item">
+            <image src="{{item}}" alt=""></image>
+            <view class='delete' bindtap='deleteImg' data-index="{{index}}">
+              <image src="../../images/add_space/delete.png"></image>
+            </view>
+          </view>
+          <view class="last-item" wx:if="{{imgs.length >= 9 ? false : true}}"   bindtap= "bindUpload">
+            <text class="sign">+</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="form-cell">
+      <view class="form-cell_title">位置</view>
+      <input class="form-cell_input" placeholder="请输入具体位置" placeholder-class="form-cell_title-placeholder"
+        bindinput="onLocationInput" value="{{Location}}" />
+    </view>
+    <view class="form-cell">
+      <view class="form-cell_title">上传原因</view>
+      <input class="form-cell_input" placeholder="请输入改造原因" placeholder-class="form-cell_title-placeholder"
+        bindinput="onReasonInput" value="{{Reason}}" />
+    </view>
+    <view class="form-cell">
+      <view class="form-cell_title">面积（平方米）</view>
+      <input class="form-cell_input" placeholder="请输入改造区域面积"
+      type="number" maxlength="8" placeholder-class="form-cell_title-placeholder"
+        bindinput="onAreaInput" value="{{Area}}" />
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="reset" bindtap="resetTodo">重置</view>
+    <view class="save" bindtap="saveSpace">上传</view>
+  </view>
+</view>
+
