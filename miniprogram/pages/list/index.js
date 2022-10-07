@@ -161,7 +161,7 @@ Page({
 
   toAddPage() {
     wx.navigateTo({
-      url: '../../pages/add/index',
+      url: '../../pages/add_space/add_space',
     })
   }
 })
