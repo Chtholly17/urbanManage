@@ -8,7 +8,6 @@
     "pages/information/index",
     "pages/user/user",
     "pages/user_info/user_info",
-    "pages/add_space",
     "pages/add_space/add_space"
   ],
   "window": {

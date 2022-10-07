@@ -161,12 +161,13 @@ Page({
     const db = await getApp().database()
     //查询当前用户的Community
     let openid = getApp().globalData.openid
-    console.log(openid)
+    //console.log(openid)
+    //console.log(this.data.Reason)
     db.collection('user').where({
       _openid: openid
     }).get({
       success: res=> {
-        //console.log(res.data)
+        //console.log(that.data.Reason)
         //console.log(res.data[0].Community)
         that.setData({
           Community: res.data[0].Community
@@ -174,7 +175,7 @@ Page({
         db.collection('space').add({
           data: {
             imgs: that.data.imgs,
-            Location: that.data.Location,
+            Location: this.data.Location,
             Reason: that.data.Reason,
             Area: that.data.Area,
             Community: that.data.Community
@@ -188,9 +189,9 @@ Page({
     })
   },
 
-  onUnload:function(){
-    this.resetTodo()
-  }
+  // onUnload:function(){
+  //   this.resetTodo()
+  // }
 
 
 })
