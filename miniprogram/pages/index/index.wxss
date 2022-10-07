@@ -14,7 +14,7 @@
 }
 
 .title {
-  margin-top: 48px;
+  margin-top: 30px;
   font-size: 17px;
   font-weight: bold;
 }
@@ -36,11 +36,13 @@
 }
 
 .checkbox {
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
-  align-self: flex-start;
-  transform: translateY(5px);
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 22rpx;
+  margin-bottom: 10rpx;
+  position: relative;
+  /* align-self: flex-start; */
+  /* transform: translateY(5px); */
 }
 
 .todo-info {

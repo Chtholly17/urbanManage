@@ -15,7 +15,7 @@
   <view class="form-group" wx:if="{{space.length > 0}}">
     <view class="form-cell" wx:for="{{space}}" wx:key="index">
         <view class="slide" data-index="{{index}}" bindtap="toDetailPage">
-          <image class="checkbox" data-index='{{index}}' src="{{item.test}}" catchtap="finishTodo"/>
+          <image class="checkbox" data-index='{{index}}' src="{{item.imgs[0]}}" catchtap="finishTodo"/>
           <view class="todo-info">
             <view class="todo-info_title">位置: {{util.filterStr(item.Location, 10)}}</view>
             <view class="todo-info_title">上传原因: {{util.filterStr(item.Reason, 10)}}</view>
