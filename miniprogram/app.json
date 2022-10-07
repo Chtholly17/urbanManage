@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/list/index",
+    "pages/index/index",
+    "pages/user/user",
     "pages/add/index",
     "pages/file/index",
     "pages/edit/index",
     "pages/detail/index",
     "pages/information/index",
-    "pages/user/user",
     "pages/user_info/user_info",
     "pages/add_space/add_space"
   ],
@@ -21,7 +21,7 @@
     "selectedColor": "#33a3dc",
     "list": [
       {
-        "pagePath": "pages/list/index",
+        "pagePath": "pages/index/index",
         "iconPath": "images/tabbar/home.png",
         "selectedIconPath": "images/tabbar/home_clicked.png",
         "text": "首页"

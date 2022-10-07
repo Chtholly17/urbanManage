@@ -77,7 +77,7 @@ textarea{
 
 /* pages/user/user.wxss */
 .avatar-wrapper {
-  background: #1b82d1;
+  background: #f6f6f6;
   padding: 25px 0;
 }
 .avatar-wrapper .avatar {
@@ -85,8 +85,10 @@ textarea{
   text-align: center;
 }
 .avatar-wrapper .avatar image {
-  width: 100px;
-  height: 100px;
+  margin-right: 5px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
 }
 .avatar-wrapper .text {
   text-align: center;
