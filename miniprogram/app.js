@@ -2,6 +2,11 @@
 
 App({
   async onLaunch() {
+    
+    // wx.cloud.init({
+    //   env: "cloud1-4g6rqvh1ea2d6d16"
+    // })
+
     this.initcloud()
 
     this.globalData = {
