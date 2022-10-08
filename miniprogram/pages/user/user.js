@@ -9,6 +9,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    user: null,
     menuitems: [
       { text: '个人信息', url: '../user_info/user_info', icon: '/images/tabbar/user.png', tips: '' },
       { text: '我的上传', url: '../userinfo/userinfo', icon: '../../images/icon-index.png', tips: '' }
@@ -51,8 +52,26 @@ Page({
   },
 
 
-  getUserInfo: function (e) {
+getUserInfo: async function (e) {
     this.setUserInfo(e.detail.userInfo);
+
+    var openid = app.globalData.openid;
+    const db = await getApp().database();
+      db.collection('user').where({
+        _openid: openid
+      }).get().then(res => {
+        const{
+          data
+        } = res
+        this.setData({
+          user: data[0],
+        })
+      })
+      if (this.data.user == null) {
+        wx.redirectTo({
+          url: '../user_info/user_info',
+        })
+      }
   },
 
   setUserInfo: function (userInfo) {
@@ -74,9 +93,7 @@ Page({
   //     })
   //     wx.setStorageSync("userinfo", e.detail.userInfo);
   //     //回到list/index
-  //     // wx.switchTab({
-  //     //   url: '../list/index',
-  //     // })
+
   //   }
   // }
 })

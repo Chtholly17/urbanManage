@@ -8,6 +8,7 @@ Page({
     pending: [], // 未完成待办事项
     finished: [], // 已完成待办事项
     space:  [],
+    user: null,
     hasUserInfo: false,
     apart_name: null
   },
@@ -23,6 +24,20 @@ Page({
           space: data,
         })
       })
+
+      var openid = app.globalData.openid
+      db.collection('user').where({
+        _openid: openid
+      }).get().then(res => {
+        const{
+          data
+        } = res
+        this.setData({
+          user: data[0],
+        })
+      })
+
+      console.log(this.data.user);
 
 
 
