@@ -87,8 +87,8 @@ Page({
             }  
           })
         }
-        wx.navigateBack({
-          delta: 0,
+        wx.redirectTo({
+          url: '../user/user',
         })
       },
       fail: err=>{

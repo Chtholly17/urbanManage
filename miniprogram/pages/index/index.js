@@ -37,34 +37,28 @@ Page({
         })
       })
 
-      console.log(this.data.user);
-
-
-
-
-
     if (typeof this.getTabBar === 'function' && 
       this.getTabBar()) {
         this.getTabBar().setData({
           selected: 0
         })
       }
-      // if (app.globalData.hasUserInfo == false) {
-      //   wx.showModal({
-      //     title: '请先登录',
-      //     icon: 'none',
-      //     success: function(res) {
-      //         if (res.confirm) {
-      //           wx.reLaunch({
-      //             url: '../user/user',
-      //           })
-      //         }
-      //         else {
-      //           wx.exitMiniProgram({success: (res) => {}})
-      //         }
-      //     }
-      //   })
-      // }
+      if (app.globalData.hasUserInfo == false) {
+        wx.showModal({
+          title: '请先登录',
+          icon: 'none',
+          success: function(res) {
+              if (res.confirm) {
+                wx.reLaunch({
+                  url: '../user/user',
+                })
+              }
+              else {
+                wx.exitMiniProgram({success: (res) => {}})
+              }
+          }
+        })
+      }
   },
 
   // 跳转响应函数

@@ -67,13 +67,13 @@ getUserInfo: async function (e) {
         this.setData({
           user: data[0],
         })
+        if (this.data.user == null) {
+          wx.redirectTo({
+            url: '../information/index',
+          })
+        }
       })
-      console.log(this.data)
-      // if (this.data.user == null) {
-      //   wx.redirectTo({
-      //     url: '../user_info/user_info',
-      //   })
-      // }
+      
   },
 
   setUserInfo: function (userInfo) {
