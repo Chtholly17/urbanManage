@@ -54,7 +54,8 @@ Page({
 
 getUserInfo: async function (e) {
     this.setUserInfo(e.detail.userInfo);
-
+    console.log("in")
+    console.log(this.data.user)
     var openid = app.globalData.openid;
     const db = await getApp().database();
       db.collection('user').where({
@@ -67,11 +68,12 @@ getUserInfo: async function (e) {
           user: data[0],
         })
       })
-      if (this.data.user == null) {
-        wx.redirectTo({
-          url: '../user_info/user_info',
-        })
-      }
+      console.log(this.data)
+      // if (this.data.user == null) {
+      //   wx.redirectTo({
+      //     url: '../user_info/user_info',
+      //   })
+      // }
   },
 
   setUserInfo: function (userInfo) {
