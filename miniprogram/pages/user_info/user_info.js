@@ -11,8 +11,8 @@ Page({
    */
   async onShow(options) {
     var GenOptions = ["男","女","保密"]
-    var AgeOptions = ["18~30岁","30~45岁","45~60岁","60以上"]
-    var DuarOptions = ["3年以下","3~7年","7~10年","10年以上"]
+    var AgeOptions = ["14岁以下","14~20岁","20~30岁","30~40岁","40~50岁","50~60岁","60岁以上"]
+    var DuarOptions = ["1年以内","1~3年","3~5年","5~10年","10年以上"]
     const db = await getApp().database()
     //在数据库中更新用户信息
     //获取openid
@@ -44,13 +44,13 @@ Page({
     console.log('uplaod success')
   },
 
-  async resetInfo(){
+  resetInfo(){
     wx.navigateTo({
       url: '../information/index'
     })
   },
 
-  async return2User(){
+  return2User(){
     console.log('fuck')
     wx.navigateBack({
       delta: 0,

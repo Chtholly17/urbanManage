@@ -22,19 +22,24 @@ Page({
     }
 
     var that = this
-    let timestamp = (new Date()).valueOf()
-    wx.chooseImage({   
+    wx.chooseMedia({   
       count: that.data.count, // 默认9
+      camera: 'back',
+      mediaType: ['image'],
       sizeType: ["original", "compressed"], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ["album", "camera"], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) { 
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths
-        for (var i = 0; i < tempFilePaths.length; i++) { 
+        var tempFiles = res.tempFiles
+        //console.log(tempFiles)
+        for (var i = 0; i < tempFiles.length; i=i+1) { 
+          //console.log(tempFiles[i].tempFilePath)
+          let timestamp = (new Date()).valueOf()
           wx.cloud.uploadFile({ 
             cloudPath: timestamp + '.png',
-            filePath: tempFilePaths[i],
+            filePath: tempFiles[i].tempFilePath,
             success: function (res) { 
+              console.log(res)
               wx.showToast({ 
                 title: "上传成功",
                 icon: "none",

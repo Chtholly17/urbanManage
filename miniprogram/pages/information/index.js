@@ -8,8 +8,8 @@ Page({
     Duar: 0,
     Community: "",
     GenOptions: ["男","女","保密"],
-    AgeOptions: ["18~30岁","30~45岁","45~60岁","60以上"],
-    DuarOptions: ["3年以下","3~7年","7~10年","10年以上"]
+    AgeOptions: ["14岁以下","14~20岁","20~30岁","30~40岁","40~50岁","50~60岁","60岁以上"],
+    DuarOptions: ["1年以内","1~3年","3~5年","5~10年","10年以上"]
   },
   //选择性别
   onChooseGender(e){
@@ -74,6 +74,9 @@ Page({
               Community: this.data.Community
             }
           })
+          wx.switchTab({
+            url: '../user/user',
+          })
         }
         else{
         let curId = res.data[0]._id
@@ -86,14 +89,14 @@ Page({
               Community: this.data.Community
             }  
           })
+          wx.navigateBack({
+            delta: 0,
+          })
         }
-        wx.redirectTo({
-          url: '../user/user',
-        })
       },
       fail: err=>{
         console.log('查询失败')
-      }
+      },
     })
     console.log('uplaod success')
   },

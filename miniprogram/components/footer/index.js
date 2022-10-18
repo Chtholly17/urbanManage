@@ -12,6 +12,7 @@ Component({
       if (this.properties.addFile) {
         this.addFile()
       } else {
+        
         wx.navigateTo({
           url: '../../pages/add_space/add_space',
         })
