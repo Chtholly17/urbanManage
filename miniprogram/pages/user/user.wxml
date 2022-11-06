@@ -2,13 +2,13 @@
   <view class="avatar-wrapper">
       <block wx:if="{{!hasUserInfo && canIUse}}">
         <view class="avator">
-          <image style="border-radius: 50%;" src="/images/tabbar/user.png" mode="cover"></image>
+          <image style="border-radius: 50%; width: 233rpx; height: 204rpx; display: inline-block; box-sizing: border-box; position: relative; left: 259rpx; top: 9rpx" src="/images/tabbar/user.png" mode="cover"></image>
         </view>
         <button class="login-button head-height" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登陆/注册 </button>
       </block>
       <block wx:else>
         <view class="userinfo">
-          <image style="border-radius: 50%;" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <image style="border-radius: 50%; width: 233rpx; height: 204rpx; display: inline-block; box-sizing: border-box; position: relative; left: 259rpx; top: 9rpx" src="{{userInfo.avatarUrl}}" mode="cover"></image>
           <text class="userinfo-nickname">{{userInfo.nickName}}</text>
         </view>
       </block>

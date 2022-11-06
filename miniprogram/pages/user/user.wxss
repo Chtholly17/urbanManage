@@ -8,6 +8,12 @@
     vertical-align: center; /**垂直居中*/
     justify-content: center; /**内容居中*/
     flex-direction:row; 
+    height: 500rpx;
+    width: 270rpx;
+}
+
+.userinfo{
+  display: flex;
 }
 
 view{
