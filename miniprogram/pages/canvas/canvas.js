@@ -7,9 +7,25 @@ let cSys = {} // 当前系统配置
 let btnsRect = [] // 拖拽元素宽高
 let defaultH = 100 // 缺省高度
 let defaultW = 100 // 缺省宽度
+let active = 0
+let currentTab = 0
 
 Component({
   lifetimes: {
+    switchNav: function (e) {
+      var page = this;
+      var id = e.target.id;
+      if (this.data.currentTab == id) {
+        return false;
+      } else {
+        page.setData({
+          currentTab: id
+        });
+      }
+      page.setData({
+        active: id
+      });
+    },
     ready: function () {
       const query = wx.createSelectorQuery().in(this)
       query.select('#btn').boundingClientRect(res => {
