@@ -1,0 +1,4 @@
+<!-- index.html -->
+<view class="rect submit_btn flexbox_auto" id="btn" style="top:{{top}}px;left:{{left}}px;" bindtap="onSubmit" bindtouchmove="onTouchmove" bindtouchstart="onTouchStart">
+  提交
+</view>

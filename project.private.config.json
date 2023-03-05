@@ -3,5 +3,18 @@
   "projectname": "ukpkmkk",
   "setting": {
     "compileHotReLoad": true
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "canvas",
+          "pathName": "pages/canvas/canvas",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
   }
 }

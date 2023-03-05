@@ -1,0 +1,26 @@
+/* index.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #F5F5F5;
+}
+
+.submit_btn{
+  background: rgba(0, 0, 0, .05);
+  border-radius: 10rpx;
+  border: 2rpx solid #999999;
+  color: #999999;
+  font-size: 28rpx;
+  position: absolute;
+}
+
+.flexbox_auto{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rect{
+  height: 100rpx;
+  width: 120rpx;
+}
