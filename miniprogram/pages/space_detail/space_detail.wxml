@@ -1,0 +1,34 @@
+
+<wxs module="util" src="../util.wxs" /> 
+<view class="container"> 
+  <view class="form-group"> 
+    <view class="form-cell"> 
+      <view class="img-wrap"> 
+        <view class="form-cell_title">详情图片</view> 
+        <view class="imglist"> 
+          <view class="item" wx:for="{{imgs}}" wx:key="item"> 
+            <image src="{{item}}" alt=""></image> 
+          </view> 
+        </view> 
+      </view> 
+    </view> 
+    <view class="form-cell"> 
+      <view class="form-cell_title">位置</view> 
+      <text> {{Location}}</text> 
+    </view> 
+    <view class="form-cell"> 
+      <view class="form-cell_title">上传原因</view> 
+      <text> {{Reason}}</text> 
+    </view> 
+    <view class="form-cell"> 
+      <view class="form-cell_title">面积（平方米）</view> 
+      <text> {{Area}}</text> 
+    </view> 
+  </view> 
+ 
+  <view class="footer"> 
+    <view class="reset" bindtap="returnToList">返回</view> 
+    <view class="save" bindtap="modifySpace">修改</view> 
+  </view> 
+</view>
+ \ No newline at end of file 
