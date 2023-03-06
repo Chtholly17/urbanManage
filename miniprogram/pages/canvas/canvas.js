@@ -69,6 +69,7 @@ Page({
       height: 120, //盒子的高度，单位rpx
       countOneLine: 5, //一行盒子的个数，这个决定盒子宽度 (outWidth / countOneLine)
     },
+    count: 15,
     list: [ //列表，在这里输入想展示的数据，最后将会修改这里的顺序
       {
         id: 0, // id
@@ -134,58 +135,6 @@ Page({
         id: 15, // id
         name: '零食', //名称
       },
-      {
-        id: 16, // id
-        name: '购物', //名称
-      },
-      {
-        id: 17, // id
-        name: '其它', //名称
-      },
-      {
-        id: 18, // id
-        name: '转换', //名称
-      },
-      {
-        id: 19, // id
-        name: '出门', //名称
-      },
-      {
-        id: 20, // id
-        name: '红包', //名称
-      },
-      {
-        id: 21, // id
-        name: '食堂', //名称
-      },
-      {
-        id: 22, // id
-        name: '外卖', //名称
-      },
-      {
-        id: 23, // id
-        name: 'AA', //名称
-      },
-      {
-        id: 24, // id
-        name: '超市', //名称
-      },
-      {
-        id: 25, // id
-        name: '水电', //名称
-      },
-      {
-        id: 26, // id
-        name: '早餐', //名称
-      },
-      {
-        id: 27, // id
-        name: '水果', //名称
-      },
-      {
-        id: 28, // id
-        name: '借款', //名称
-      },
     ],
     positionList: [], //把list转化后，具有定位数据的列表（展示在页面上）
     //下面的是一些动态的索引
@@ -232,15 +181,35 @@ Page({
     //     break
     //   }
     // }
+    this.data.positionList[this.data.nowDragIndex].left = box.leftX
+    this.data.positionList[this.data.nowDragIndex].boxTop = box.topY
     this.setData({
       leftX: box.leftX,
       rightX: box.rightX,
       topY: box.topY,
       bottomY: box.bottomY,
-      showLine:-1
+      showLine:-1,
+      positionList:this.data.positionList
     })
   },
- 
+  onClick(e){
+    let positionList = this.data.positionList
+    let list = this.data.list
+    this.data.count += 1
+    let item = {
+      id: this.data.count,
+      name: "test"
+    }
+    list.push(item)
+    positionList.push({
+      ...item,
+      left: 0,
+      boxTop: 0,
+    })
+    this.setData(
+      list, positionList
+    )
+  },
   //拖拽的结束，判断是否应该移动，还是回复原位
   dragEnd(e) {
     
