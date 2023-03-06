@@ -190,6 +190,10 @@ Page({
     positionList: [], //把list转化后，具有定位数据的列表（展示在页面上）
     //下面的是一些动态的索引
     showLine: -1, //显示哪个索引的蓝色线
+    leftX:0,
+    rightX:0,
+    topY:0,
+    bottomY:0,
     nowDragIndex: -1, //当前拖动的索引
   },
  
@@ -218,49 +222,56 @@ Page({
     box.bottomY = y + drag.height //正在拖动的盒子的底部y值
  
     //使用for循环判断现在正在哪个位置 - 性能问题，如何防抖？
-    for (let i = 0; i < this.data.positionList.length; i++) {
-      const element = this.data.positionList[i];
-      //判断拖拽的盒子，在哪个蓝色模块的位置
-      if (box.leftX < element.left && box.rightX > element.left && element.boxTop - 20 < box.topY && element.boxBottom + 20 > box.bottomY) {
-        this.setData({
-          showLine: i
-        })
-        break
-      }
-    }
- 
+    // for (let i = 0; i < this.data.positionList.length; i++) {
+    //   const element = this.data.positionList[i];
+    //   //判断拖拽的盒子，在哪个蓝色模块的位置
+    //   if (box.leftX < element.left && box.rightX > element.left && element.boxTop - 20 < box.topY && element.boxBottom + 20 > box.bottomY) {
+    //     this.setData({
+    //       showLine: i
+    //     })
+    //     break
+    //   }
+    // }
+    this.setData({
+      leftX: box.leftX,
+      rightX: box.rightX,
+      topY: box.topY,
+      bottomY: box.bottomY,
+      showLine:-1
+    })
   },
  
   //拖拽的结束，判断是否应该移动，还是回复原位
   dragEnd(e) {
-    let newIndex = this.data.showLine //即将挪动到的位置
-    let nowDragIndex = this.data.nowDragIndex //原本的位置
-    if (newIndex >= 0 && nowDragIndex !== newIndex) { //给showline赋值了且不是自己，说明需要变化位置
-      console.log('需要变化位置');
-      let newList = this.data.list //改变的是list，而不是页面展示的positionList
-      let item = newList.splice(nowDragIndex, 1) // 删除指定的元素，给item
-      newList.splice(newIndex, 0, item[0]) // 把item添加到指定位置
+    
+    // let newIndex = this.data.showLine //即将挪动到的位置
+    // let nowDragIndex = this.data.nowDragIndex //原本的位置
+    // if (newIndex >= 0 && nowDragIndex !== newIndex) { //给showline赋值了且不是自己，说明需要变化位置
+    //   console.log('需要变化位置');
+    //   let newList = this.data.list //改变的是list，而不是页面展示的positionList
+    //   let item = newList.splice(nowDragIndex, 1) // 删除指定的元素，给item
+    //   newList.splice(newIndex, 0, item[0]) // 把item添加到指定位置
  
-      this.setData({
-        list: newList, //data的list修改，方便接下来重新计算位置
-      })
-      //然后刷新页面，重新计算position
-      this.countPosition()
+    //   this.setData({
+    //     list: newList, //data的list修改，方便接下来重新计算位置
+    //   })
+    //   //然后刷新页面，重新计算position
+    //   this.countPosition()
  
-    } else {
-      console.log('拖了但没完全拖，回复原位');
-      setTimeout(() => {//使用定时器，防止拖拽到边缘时，无法正常归位（等待边缘动画结束后再回复原位，这个好像是微信小程序这个组件的bug，搜到了三个月前的bug，到现在还没解决）
-        this.setData({
-          positionList: this.data.positionList, //回复原位
-        })
-      }, 300);
-    }
-    //重置索引
-    this.setData({
-      showLine: -1,
-      nowDragIndex: -1,
-    })
-    console.log(this.data);
+    // } else {
+    //   console.log('拖了但没完全拖，回复原位');
+    //   setTimeout(() => {//使用定时器，防止拖拽到边缘时，无法正常归位（等待边缘动画结束后再回复原位，这个好像是微信小程序这个组件的bug，搜到了三个月前的bug，到现在还没解决）
+    //     this.setData({
+    //       positionList: this.data.positionList, //回复原位
+    //     })
+    //   }, 300);
+    // }
+    // //重置索引
+    // this.setData({
+    //   showLine: -1,
+    //   nowDragIndex: -1,
+    // })
+    // console.log(this.data);
   },
  
  
