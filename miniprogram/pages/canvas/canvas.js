@@ -13,68 +13,9 @@ Page({
     list: [ //列表，在这里输入想展示的数据，最后将会修改这里的顺序
       {
         id: 0, // id
-        name: '餐饮', //名称
-      },
-      {
-        id: 1, // id
-        name: '交通', //名称
-      },
-      {
-        id: 2, // id
-        name: '住房', //名称
-      },
-      {
-        id: 3, // id
-        name: '美容', //名称
-      },
-      {
-        id: 4, // id
-        name: '服饰', //名称
-      },
-      {
-        id: 5, // id
-        name: '运动', //名称
-      },
-      {
-        id: 6, // id
-        name: '旅行', //名称
-      },
-      {
-        id: 7, // id
-        name: '娱乐', //名称
-      },
-      {
-        id: 8, // id
-        name: '生活', //名称
-      },
-      {
-        id: 9, // id
-        name: '医疗', //名称
-      },
-      {
-        id: 10, // id
-        name: '通讯', //名称
-      },
-      {
-        id: 11, // id
-        name: '学习', //名称
-      },
-      {
-        id: 12, // id
-        name: '礼物', //名称
-      },
-      {
-        id: 13, // id
-        name: '亲属', //名称
-      },
-      {
-        id: 14, // id
-        name: '数码', //名称
-      },
-      {
-        id: 15, // id
-        name: '零食', //名称
-      },
+        name: '书架-塑料', //名称
+        img: "../../images/items/书架-塑料.jpg"
+      }
     ],
     positionList: [], //把list转化后，具有定位数据的列表（展示在页面上）
     //下面的是一些动态的索引
@@ -125,10 +66,12 @@ Page({
     let list = this.data.list
     let newItemName = this.data.newItemName
     if (!newItemName) return // 输入不能为空    
+    let img_path = "../../images/items/" + newItemName + ".jpg"
     let count = this.data.count + 1
     let item = {
       id: count,
-      name: newItemName
+      name: newItemName,
+      img: img_path
     }
     list.push(item)
     positionList.push({

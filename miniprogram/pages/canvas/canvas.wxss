@@ -5,60 +5,6 @@ page{
   background-color: #F5F5F5;
 }
 
-.submit_btn{
-  background: rgba(0, 0, 0, .05);
-  border-radius: 10rpx;
-  border: 2rpx solid #999999;
-  color: #999999;
-  font-size: 28rpx;
-  position: absolute;
-}
-
-.flexbox_auto{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.rect{
-  height: 100rpx;
-  width: 120rpx;
-}
-
-.productNav{
-  display: flex;
-  flex-direction: row;
-  font-family: "Microsoft YaHei"
-}
-.left{
-  width: 25%;
-  font-size: 30rpx;
-  background-color: #f4f4f4;
-}
-.left view{
-  text-align: center;
-  height: 90rpx;
-  line-height: 90rpx;
-}
-.selected{
-  background-color: #fff;
-  border-left: 2px solid #E54847;
-  font-weight: bold;
-  color: #E54847;
-}
-.normal{
-  background-color: #f4f4f4;
-  border-bottom: 1px solid #f2f2f2;
-}
-.right{
-  width:75%;
-  margin: 0;
-}
-swiper{
-  height: 500px;
-}
-
-
 .btn{
   padding: 10rpx 20rpx;
   float:left;
@@ -81,7 +27,7 @@ swiper{
   justify-content: center;
   background-color: #ececec00;
 }
-.list .moveList .moveItem .icon {
+/* .list .moveList .moveItem .icon {
   height: 60rpx;
   width: 60rpx;
   line-height: 60rpx;
@@ -89,7 +35,7 @@ swiper{
   font-size: 20rpx;
   background-color: aqua;
   border-radius: 50%;
-}
+} */
 .list .moveList .moveItem .showLine {
   position: absolute;
   left: 0;
@@ -97,4 +43,18 @@ swiper{
   width: 10rpx;
   height: 100%;
   background-color: blue;
+}
+.add {
+    display: flex;    /*设置显示样式**/
+    align-items: center;    /**子view垂直居中*/
+    vertical-align: center; /**垂直居中*/
+    justify-content: center; /**内容居中*/
+    flex-direction:row; 
+}
+
+/**图像**/
+.image{
+  width: 100rpx;
+  height: 100rpx;
+  border: 1px solid green;
 }
