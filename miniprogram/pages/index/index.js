@@ -64,7 +64,7 @@ Page({
   // 跳转响应函数
   toFileList(e) {
     const todoIndex = e.currentTarget.dataset.index
-    const todo = this.data.pending[todoIndex]
+    const todo = this.data.space[todoIndex]
     wx.navigateTo({
       url: '../file/index?id=' + todo._id,
     })
@@ -72,9 +72,9 @@ Page({
 
   toDetailPage(e) {
     const todoIndex = e.currentTarget.dataset.index
-    const todo = this.data.pending[todoIndex]
+    const todo = this.data.space[todoIndex]
     wx.navigateTo({
-      url: '../detail/index?id=' + todo._id,
+      url: '../space_detail/space_detail?id=' + todo._id,
     })
   },
 
