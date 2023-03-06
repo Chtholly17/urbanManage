@@ -12,20 +12,6 @@ let currentTab = 0
 
 Component({
   lifetimes: {
-    switchNav: function (e) {
-      var page = this;
-      var id = e.target.id;
-      if (this.data.currentTab == id) {
-        return false;
-      } else {
-        page.setData({
-          currentTab: id
-        });
-      }
-      page.setData({
-        active: id
-      });
-    },
     ready: function () {
       const query = wx.createSelectorQuery().in(this)
       query.select('#btn').boundingClientRect(res => {
@@ -41,8 +27,9 @@ Component({
     },
   },
   data: {
+    imgs:["../../images/add/next.png","../../images/add_space/delete.png"],
     top: 0,
-    left: 0,
+    left: 0
   },
   methods: {
     onTouchStart (e) {
