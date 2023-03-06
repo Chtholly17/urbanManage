@@ -6,7 +6,7 @@
   module.exports.parseIntNumber = parseIntNumber;
 </wxs>
 <view class="list">
-  <movable-area class="moveList" style="height: {{(m1.parseIntNumber(positionList.length/drag.countOneLine)+6) * (drag.height)}}rpx;width: {{drag.outWidth}}rpx;">
+  <movable-area class="moveList" style="height: {{(9) * (drag.height)}}rpx;width: {{drag.outWidth}}rpx;">
     <movable-view wx:for="{{positionList}}" wx:key="id" out-of-bounds direction="all" style="height: {{drag.height}}rpx;width: calc({{drag.outWidth}}rpx / {{drag.countOneLine}});" class="moveItem" x="{{positionList[index].left}}rpx" y="{{positionList[index].boxTop}}rpx" bindchange="drag" bindtouchend="dragEnd" data-myindex="{{index}}">
       <!-- 蓝色边边的出现条件：当前轮到index这个索引显示了 且 当前拖动的元素的索引不是index -->
       <!-- <view class="icon">图标</view> -->
@@ -22,4 +22,11 @@
   <input class="input" placeholder="请输入名称" bindinput="onInput"/>
   <br></br>
   <button class="btn" bindtap="onClick">添加</button>
+</view>
+
+<view>
+  <view> 预算：{{total_carbon}} 元 </view> 
+  <view> 碳排放：{{total_cost}} 千克 </view> 
+  <view> 居民满意度：{{total_sat}} </view> 
+  <view> 总分：{{score}} </view> 
 </view>

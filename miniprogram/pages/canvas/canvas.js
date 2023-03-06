@@ -1,4 +1,21 @@
 // pages/drag/drag.js
+var attr = {
+  "书架-塑料": {
+    carbon: 8.464,
+    cost: 79,
+    sat: 1.6
+  },
+  "书架-木制": {
+    carbon: 0,
+    cost: 293.05,
+    sat: 4.3
+  },
+  "书架-金属": {
+    carbon: 36.2375,
+    cost: 299,
+    sat: 4.5
+  }
+}
 Page({
   /**
    * 页面的初始数据
@@ -9,13 +26,20 @@ Page({
       height: 120, //盒子的高度，单位rpx
       countOneLine: 5, //一行盒子的个数，这个决定盒子宽度 (outWidth / countOneLine)
     },
-    count: 15,
+    count: 1,
+    total_carbon: 0,
+    total_cost: 0,
+    total_sat: 0,
+    score:0, 
+    max_carbon:0,
+    max_cost:0,
+    max_sat:0,
     list: [ //列表，在这里输入想展示的数据，最后将会修改这里的顺序
-      {
-        id: 0, // id
-        name: '书架-塑料', //名称
-        img: "../../images/items/书架-塑料.jpg"
-      }
+      // {
+      //   id: 0, // id
+      //   name: '书架-塑料', //名称
+      //   img: "../../images/items/书架-塑料.jpg"
+      // }
     ],
     positionList: [], //把list转化后，具有定位数据的列表（展示在页面上）
     //下面的是一些动态的索引
@@ -65,7 +89,7 @@ Page({
     let positionList = this.data.positionList
     let list = this.data.list
     let newItemName = this.data.newItemName
-    if (!newItemName) return // 输入不能为空    
+    if (!newItemName || attr[newItemName] == undefined) return // 输入不能为空    
     let img_path = "../../images/items/" + newItemName + ".jpg"
     let count = this.data.count + 1
     let item = {
@@ -79,22 +103,37 @@ Page({
       left: 0,
       boxTop: 0,
     })
+    let total_carbon = parseFloat(this.data.total_carbon) + attr[newItemName].carbon
+    let total_cost = parseFloat(this.data.total_cost) + attr[newItemName].cost
+    let total_sat = parseFloat(this.data.total_sat) + attr[newItemName].sat
+    total_carbon = parseFloat(total_carbon).toFixed(2)
+    total_cost = parseFloat(total_cost).toFixed(2)
+    total_sat = parseFloat(total_sat).toFixed(2)
     this.setData({
       count,
       list, 
       positionList,
       nowDragIndex: -1,
-      showLine:-1
+      showLine:-1,
+      max_carbon: Math.max(this.data.max_carbon, attr[newItemName].carbon),
+      max_cost: Math.max(this.data.max_cost, attr[newItemName].cost),
+      max_sat: Math.max(this.data.max_sat, attr[newItemName].sat),
+      total_carbon: total_carbon,
+      total_cost: total_cost,
+      total_sat: total_sat,
+      score: 0
     })
+    let score = this.data.total_sat/this.data.max_sat/this.data.count*73.06 + (this.data.max_carbon - this.data.total_carbon / this.data.count)/this.data.max_carbon*18.84+(this.data.max_cost - this.data.total_cost / this.data.count)/this.data.max_cost*8.1
+    this.setData({
+      score: score.toFixed(2)
+    })
+    // Sat/count/5*73.06+(1200-CO2/count)/1200*18.84+(3000-price/count)/3000*8.1
   },
   onInput(e) {
     this.setData({
       newItemName: e.detail.value
     })
   },
- 
- 
- 
   //计算list里每个数据的坐标,放到positionList里
   countPosition() {
     let positionList = [] //装着列表的坐标数据
