@@ -1,65 +1,5 @@
-// // index.js
-// let startX = 0 // 获取手指初始坐标
-// let startY = 0
-// let x = 0 // 获得盒子原来的位置
-// let y = 0
-// let cSys = {} // 当前系统配置
-// let btnsRect = [] // 拖拽元素宽高
-// let defaultH = 100 // 缺省高度
-// let defaultW = 100 // 缺省宽度
-// let active = 0
-// let currentTab = 0
-
-// Component({
-//   lifetimes: {
-//     ready: function () {
-//       const query = wx.createSelectorQuery().in(this)
-//       query.select('#btn').boundingClientRect(res => {
-//         cSys = wx.getSystemInfoSync()
-//         btnsRect = [res.width, res.height]
-//         const top = Math.floor(cSys.windowHeight - btnsRect[1] - defaultH)
-//         const left = Math.floor(cSys.windowWidth - btnsRect[0] - defaultW)
-//         this.setData({
-//           top,
-//           left
-//         })
-//       }).exec();
-//     },
-//   },
-//   data: {
-//     imgs:"../../images/add_space/add.png",
-//     top: 0,
-//     left: 0
-//   },
-//   methods: {
-//     onTouchStart (e) {
-//       // 获取手指初始坐标
-//       startX = e.changedTouches[0].pageX;
-//       startY = e.changedTouches[0].pageY;
-//       x = e.currentTarget.offsetLeft;
-//       y = e.currentTarget.offsetTop;
-//     },
-//     onTouchmove (e) {
-//       // 计算手指的移动距离：手指移动之后的坐标减去手指初始的坐标
-//       const moveX = e.changedTouches[0].pageX - startX;
-//       const moveY = e.changedTouches[0].pageY - startY;
-//       // 移动盒子 盒子原来的位置 + 手指移动的距离
-//       const top = Math.floor(Math.min(Math.max(0, y + moveY), cSys.windowHeight - btnsRect[1]))
-//       const left = Math.floor(Math.min(Math.max(0, x + moveX), cSys.windowWidth - btnsRect[0]))
-//       this.setData({
-//         top,
-//         left
-//       })
-//     },
-//     onSubmit () {
-//       console.warn('提交');
-//     }
-//   },
-// })
-
 // pages/drag/drag.js
 Page({
- 
   /**
    * 页面的初始数据
    */
@@ -149,7 +89,7 @@ Page({
   //拖拽时触发
   drag(e) {
     if (e.detail.source == '') return //如果这个值为空，说明不是手动拖拽的，不要进行下面的操作
-    // console.log(e.detail);
+    console.log("test");
  
  
     let myindex = e.currentTarget.dataset.myindex //当前拖动的图标的index
@@ -169,18 +109,6 @@ Page({
     box.rightX = x + drag.outWidth / drag.countOneLine //正在拖动的盒子的右侧x值
     box.topY = y //正在拖动的盒子的顶部y值
     box.bottomY = y + drag.height //正在拖动的盒子的底部y值
- 
-    //使用for循环判断现在正在哪个位置 - 性能问题，如何防抖？
-    // for (let i = 0; i < this.data.positionList.length; i++) {
-    //   const element = this.data.positionList[i];
-    //   //判断拖拽的盒子，在哪个蓝色模块的位置
-    //   if (box.leftX < element.left && box.rightX > element.left && element.boxTop - 20 < box.topY && element.boxBottom + 20 > box.bottomY) {
-    //     this.setData({
-    //       showLine: i
-    //     })
-    //     break
-    //   }
-    // }
     this.data.positionList[this.data.nowDragIndex].left = box.leftX
     this.data.positionList[this.data.nowDragIndex].boxTop = box.topY
     this.setData({
@@ -198,7 +126,7 @@ Page({
     this.data.count += 1
     let item = {
       id: this.data.count,
-      name: "test"
+      name: this.data.count
     }
     list.push(item)
     positionList.push({
