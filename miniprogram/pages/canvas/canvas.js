@@ -14,7 +14,52 @@ var attr = {
     carbon: 36.2375,
     cost: 299,
     sat: 4.5
-  }
+  },
+  "地毯-塑料": {
+    carbon: 2.62,
+    cost: 188,
+    sat: 1.6
+  },
+  "地毯-布料": {
+    carbon: 43.8,
+    cost: 300,
+    sat: 4.3
+  },
+  "猫狗窝-布艺": {
+    carbon: 10.95,
+    cost: 150,
+    sat: 3.5
+  },
+  "猫狗窝-木制": {
+    carbon: 0,
+    cost: 330,
+    sat: 3.6
+  },
+  "鸟巢-塑料": {
+    carbon: 0.262,
+    cost: 20,
+    sat: 1.5
+  },
+  "鸟巢-木制": {
+    carbon: 0,
+    cost: 26.3,
+    sat: 4.6
+  },
+  "鸟巢-金属": {
+    carbon: 2.23,
+    cost: 55,
+    sat: 2.3
+  },
+  "食盆-塑料": {
+    carbon: 0.7074,
+    cost: 19.3,
+    sat: 2.5
+  },
+  "食盆-金属": {
+    carbon: 0.5575,
+    cost: 26,
+    sat: 4.4
+  },
 }
 Page({
   /**
