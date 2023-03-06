@@ -9,7 +9,33 @@ Page({
     Location: "",
     Reason: "",
     Area: 0,
-    Community: ""
+    Community: "",
+    longitude: 0,
+    latitude: 0,
+    markers: []
+  },
+
+  onLoad: function() {
+    wx.getLocation({
+      type: 'wgs84',
+      success: (res) => {
+        console.log(res.latitude)
+        console.log(res.longitude)
+        this.setData({
+          latitude: res.latitude,
+          longitude: res.longitude,
+          markers: [{
+            id: 1,
+            latitude,
+            longitude,
+            title: '当前位置',
+            width: 30,
+            height: 30
+          }]
+        })
+        this.mapCtx = wx.createMapContext('myMap')
+      }
+    })
   },
 
   bindUpload: function (e) {
