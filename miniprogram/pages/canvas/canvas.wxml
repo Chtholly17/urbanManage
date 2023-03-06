@@ -17,12 +17,11 @@
       <view class="icon">图标</view>
       <view class="name">{{item.name}}</view>
     </movable-view>
-    <view class="footer">
-    <view class="add" bindtap="onClick">
-      <image class="add-image" src="../../images/footer/add.png"/>
-    </view>
-  </view>
   </movable-area>
 </view>
 
-
+<view class="footer">
+    <view class="add" bindtap="onClick">
+      <image class="add-image" src="../../images/footer/add.png"/>
+    </view>
+</view>
