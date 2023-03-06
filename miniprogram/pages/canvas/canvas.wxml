@@ -1,8 +1,4 @@
 <!-- index.html -->
-
-  <!-- <image class="rect submit_btn flexbox_auto" id="btn" style="top:{{top}}px;left:{{left}}px;" bindtap="onSubmit" bindtouchmove="onTouchmove" bindtouchstart="onTouchStart" src="{{imgs}}">
-  </image> -->
-
   <wxs module="m1">
   var parseIntNumber = function (num) {
     return parseInt(num)
@@ -20,8 +16,7 @@
   </movable-area>
 </view>
 
-<view class="footer">
-    <view class="add" bindtap="onClick">
-      <image class="add-image" src="../../images/footer/add.png"/>
-    </view>
+<view class="add">
+  <input class="input" placeholder="请输入要添加的项目名称" bindinput="onInput"/>
+  <button class="btn" bindtap="onClick">添加</button>
 </view>

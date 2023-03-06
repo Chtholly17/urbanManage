@@ -123,10 +123,12 @@ Page({
   onClick(e){
     let positionList = this.data.positionList
     let list = this.data.list
-    this.data.count += 1
+    let newItemName = this.data.newItemName
+    if (!newItemName) return // 输入不能为空    
+    let count = this.data.count + 1
     let item = {
-      id: this.data.count,
-      name: this.data.count
+      id: count,
+      name: newItemName
     }
     list.push(item)
     positionList.push({
@@ -134,41 +136,18 @@ Page({
       left: 0,
       boxTop: 0,
     })
-    this.setData(
-      list, positionList
-    )
+    this.setData({
+      count,
+      list, 
+      positionList,
+      nowDragIndex: -1,
+      showLine:-1
+    })
   },
-  //拖拽的结束，判断是否应该移动，还是回复原位
-  dragEnd(e) {
-    
-    // let newIndex = this.data.showLine //即将挪动到的位置
-    // let nowDragIndex = this.data.nowDragIndex //原本的位置
-    // if (newIndex >= 0 && nowDragIndex !== newIndex) { //给showline赋值了且不是自己，说明需要变化位置
-    //   console.log('需要变化位置');
-    //   let newList = this.data.list //改变的是list，而不是页面展示的positionList
-    //   let item = newList.splice(nowDragIndex, 1) // 删除指定的元素，给item
-    //   newList.splice(newIndex, 0, item[0]) // 把item添加到指定位置
- 
-    //   this.setData({
-    //     list: newList, //data的list修改，方便接下来重新计算位置
-    //   })
-    //   //然后刷新页面，重新计算position
-    //   this.countPosition()
- 
-    // } else {
-    //   console.log('拖了但没完全拖，回复原位');
-    //   setTimeout(() => {//使用定时器，防止拖拽到边缘时，无法正常归位（等待边缘动画结束后再回复原位，这个好像是微信小程序这个组件的bug，搜到了三个月前的bug，到现在还没解决）
-    //     this.setData({
-    //       positionList: this.data.positionList, //回复原位
-    //     })
-    //   }, 300);
-    // }
-    // //重置索引
-    // this.setData({
-    //   showLine: -1,
-    //   nowDragIndex: -1,
-    // })
-    // console.log(this.data);
+  onInput(e) {
+    this.setData({
+      newItemName: e.detail.value
+    })
   },
  
  
