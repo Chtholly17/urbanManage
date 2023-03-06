@@ -1,4 +1,21 @@
 <!-- index.html -->
 
-  <image class="rect submit_btn flexbox_auto" id="btn" style="top:{{top}}px;left:{{left}}px;" bindtap="onSubmit" bindtouchmove="onTouchmove" bindtouchstart="onTouchStart" src="../../images/add/next.png">
-  </image>
+  <!-- <image class="rect submit_btn flexbox_auto" id="btn" style="top:{{top}}px;left:{{left}}px;" bindtap="onSubmit" bindtouchmove="onTouchmove" bindtouchstart="onTouchStart" src="{{imgs}}">
+  </image> -->
+
+  <wxs module="m1">
+  var parseIntNumber = function (num) {
+    return parseInt(num)
+  }
+  module.exports.parseIntNumber = parseIntNumber;
+</wxs>
+<view class="list">
+  <movable-area class="moveList" style="height: {{(m1.parseIntNumber(positionList.length/drag.countOneLine)+1) * (drag.height)}}rpx;width: {{drag.outWidth}}rpx;">
+    <movable-view wx:for="{{positionList}}" wx:key="id" out-of-bounds direction="all" style="height: {{drag.height}}rpx;width: calc({{drag.outWidth}}rpx / {{drag.countOneLine}});background-color: {{nowDragIndex == index ? '#bbbbbb90':''}};" class="moveItem" x="{{positionList[index].left}}rpx" y="{{positionList[index].boxTop}}rpx" bindchange="drag" bindtouchend="dragEnd" data-myindex="{{index}}">
+      <!-- 蓝色边边的出现条件：当前轮到index这个索引显示了 且 当前拖动的元素的索引不是index -->
+      <view class="showLine" wx:if="{{ showLine === index && nowDragIndex!==index}}"></view>
+      <view class="icon">图标</view>
+      <view class="name">{{item.name}}</view>
+    </movable-view>
+  </movable-area>
+</view>
