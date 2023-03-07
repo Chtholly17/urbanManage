@@ -33,6 +33,11 @@
       <input class="form-cell_input" placeholder="请输入小区名称" placeholder-class="form-cell_title-placeholder"
         bindinput="onCommunityInput" value="{{Community}}" />
     </view>
+    <view class="form-cell">
+      <view class="form-cell_title">所在城市</view>
+      <input class="form-cell_input" placeholder="请输入您所在的城市" placeholder-class="form-cell_title-placeholder"
+        bindinput="onCityInput" value="{{City}}" />
+    </view>
   </view>
 </view>
 <view>

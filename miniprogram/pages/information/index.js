@@ -7,6 +7,7 @@ Page({
     Age: 0,
     Duar: 0,
     Community: "",
+    City: "",
     GenOptions: ["男","女","保密"],
     AgeOptions: ["14岁以下","14~20岁","20~30岁","30~40岁","40~50岁","50~60岁","60岁以上"],
     DuarOptions: ["1年以内","1~3年","3~5年","5~10年","10年以上"]
@@ -35,11 +36,26 @@ Page({
       Community: e.detail.value
     })
   },
+  // 输入所在城市
+  onCityInput(e){
+    this.setData({
+      City: e.detail.value
+    })
+  },
+
   //保存用户信息
   async saveInfo(){
     if(this.data.Community===""){
       wx.showToast({
         title: '小区名称未填写',
+        icon: 'error',
+        duration: 2000
+      })
+      return
+    }
+    if(this.data.City === ""){
+      wx.showToast({
+        title: '所在城市未填写',
         icon: 'error',
         duration: 2000
       })
@@ -71,6 +87,7 @@ Page({
               Gender: this.data.Gen,
               Age: this.data.Age,
               Duartion: this.data.Duar,
+              City: this.data.City,
               Community: this.data.Community
             }
           })
@@ -86,11 +103,12 @@ Page({
               Gender: this.data.Gen,
               Age: this.data.Age,
               Duartion: this.data.Duar,
+              City: this.data.City,
               Community: this.data.Community
             }  
           })
           wx.navigateBack({
-            delta: 0,
+            delta: 2
           })
         }
       },
@@ -106,6 +124,7 @@ Page({
       Gen: 0,
       Age: 0,
       Duar: 0,
+      City: "",
       Community: ''
     })
   }

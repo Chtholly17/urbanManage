@@ -4,6 +4,7 @@ Page({
     Age: "unknown",
     Duartion: "unknown",
     Community: "unknown",
+    City: "unknown"
   },
 
     /**
@@ -32,7 +33,8 @@ Page({
             Gender: GenOptions[res.data[0].Gender],
             Age: AgeOptions[res.data[0].Age],
             Duartion: DuarOptions[res.data[0].Duartion],
-            Community: res.data[0].Community
+            Community: res.data[0].Community,
+            City: res.data[0].City
           })
         }
       },
