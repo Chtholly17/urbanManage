@@ -10,32 +10,66 @@ Page({
     Reason: "",
     Area: 0,
     Community: "",
+    City: "",
     longitude: 0,
     latitude: 0,
-    markers: []
   },
 
-  onLoad: function() {
-    wx.getLocation({
-      type: 'wgs84',
-      success: (res) => {
-        console.log(res.latitude)
-        console.log(res.longitude)
+  async onLoad() {
+    // wx.getLocation({
+    //   type: 'wgs84',
+    //   success: (res) => {
+    //     console.log(res.longitude)
+    //     console.log(res.longitude)
+    //     this.setData({
+    //       latitude: res.latitude,
+    //       longitude: res.longitude,
+    //       markers: [{
+    //         id: 1,
+    //         latitude,
+    //         longitude,
+    //         title: '当前位置',
+    //         width: 30,
+    //         height: 30
+    //       }]
+    //     })
+    //     this.mapCtx = wx.createMapContext('myMap')
+    //   }
+    // })
+    const db = await getApp().database()
+    //查询当前用户的Community
+    let openid = getApp().globalData.openid
+    //console.log(openid)
+    //console.log(this.data.Reason)
+    db.collection('user').where({
+      _openid: openid
+    }).get({
+      success: res=> {
+        //console.log(that.data.Reason)
+        //console.log(res.data[0].Community)
         this.setData({
-          latitude: res.latitude,
-          longitude: res.longitude,
-          markers: [{
-            id: 1,
-            latitude,
-            longitude,
-            title: '当前位置',
-            width: 30,
-            height: 30
-          }]
+          Community: res.data[0].Community,
+          City: res.data[0].City
+        })
+        const key = "3P4BZ-5PICV-QCWPH-U6X4R-RKDJK-HQFM5"
+        wx.request({
+          url: 'https://apis.map.qq.com/ws/place/v1/search?key=' + key  + '&keyword=' + res.data[0].Community+'&boundary=region('  + res.data[0].City + ',0)&page_size=1',
+          success: (res) => {
+            console.log(res.data.data[0].location.lat)
+            console.log(res.data.data[0].location.lng)
+            this.setData({
+              latitude: res.data.data[0].location.lat,
+              longitude: res.data.data[0].location.lng,
+            })
+          },
+          fail: (err) => {
+            console.log('search failed')
+          }
         })
         this.mapCtx = wx.createMapContext('myMap')
       }
     })
+
   },
 
   bindUpload: function (e) {
@@ -188,30 +222,15 @@ Page({
       })
       return
     }
-    var that = this
-    const db = await getApp().database()
-    //查询当前用户的Community
-    let openid = getApp().globalData.openid
-    //console.log(openid)
-    //console.log(this.data.Reason)
-    db.collection('user').where({
-      _openid: openid
-    }).get({
-      success: res=> {
-        //console.log(that.data.Reason)
-        //console.log(res.data[0].Community)
-        that.setData({
-          Community: res.data[0].Community
-        })
-        db.collection('space').add({
-          data: {
-            imgs: that.data.imgs,
-            Location: this.data.Location,
-            Reason: that.data.Reason,
-            Area: that.data.Area,
-            Community: that.data.Community
-          }
-        })
+
+    db.collection('space').add({
+      data: {
+        imgs: this.data.imgs,
+        Location: this.data.Location,
+        Reason: this.data.Reason,
+        Area: this.data.Area,
+        Community: this.data.Community,
+        City: this.data.City
       }
     })
 
