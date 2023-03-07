@@ -1,5 +1,4 @@
 // pages/add_space/add_space.js
-var amapFile = require('../../libs/amap-wx.js')
 Page({
   /**
    * 页面的初始数据

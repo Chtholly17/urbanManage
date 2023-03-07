@@ -12,12 +12,25 @@ page{
   border:solid 1px #dfdfdf;
   border-radius: 10rpx;
 }
-.bgimg{
+.image-container {
+  width: 100%; /* 容器宽度 */
+  height: 500rpx; /* 容器高度 */
+  background-position: center center; /* 图片位置居中 */
+  background-size: cover; /* 图片填充并裁剪到容器 */
+}
+.image-container img{
+  width: 10px; /* 容器宽度 */
+  height: 10px; /* 容器高度 */
+  object-fit: cover;
+  transform: scale(2);
+}
+/* .bgimg{
   width: 100%;
   height: 500rpx;
+  background-size: 200%;
   /* z-index: 0; */
-  /* position: absolute; */
-} 
+  /* position: absolute; 
+} */
 
 .list {
   display: flex;
