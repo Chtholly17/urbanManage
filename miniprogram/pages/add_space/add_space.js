@@ -226,8 +226,9 @@ Page({
       },
       success: res =>{
         const spaceId = res._id
+        console.log(this.data.detailImg)
         wx.navigateTo({
-          url: '../',
+          url: '../handprint-demo/handprint-demo?str=' +  encodeURIComponent(this.data.detailImg),
         })
       }
     })
@@ -259,8 +260,9 @@ Page({
               const _url = 'https://apis.map.qq.com/ws/staticmap/v2/?center=' + lat 
                           + ',' + lon + '&zoom=18' +
                           '&size=' + width + '*' + height
-                          + '&maptype=satellite'
+                          + '&maptype=roadmap'
                           + '&key=' + key
+              console.log(_url)
               that.setData({
                 detailImg: _url
               })

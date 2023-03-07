@@ -1,13 +1,4 @@
 {
-<<<<<<< HEAD
-=======
-  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-  "projectname": "ukpkmkk",
-  "setting": {
-    "compileHotReLoad": true,
-    "urlCheck": true
-  },
->>>>>>> 84df19248c5353235ee66ddf5db2f7d737da9c3d
   "condition": {
     "miniprogram": {
       "list": [
@@ -17,25 +8,8 @@
           "query": "",
           "launchMode": "default",
           "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/canvas/canvas",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/handprint-demo/handprint-demo",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
         }
       ]
     }
-  },
-  "setting": {
-    "urlCheck": false
   }
 }

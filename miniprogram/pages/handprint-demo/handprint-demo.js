@@ -14,7 +14,8 @@ Page({
     // 线颜色
     lineColor: '#000',
     // 背景颜色： 透明
-    bgColor: 'rgba(255, 255, 255, 0)'
+    bgColor: 'rgba(255, 255, 255, 0)',
+    detailImg:""
   },
 
   // 线宽
@@ -124,6 +125,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var detail = decodeURIComponent(options.str)
+    console.log(detail)
+    this.setData({
+      detailImg:detail
+    })
   },
   /**
    * 生命周期函数--监听页面显示
