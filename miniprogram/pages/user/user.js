@@ -12,7 +12,7 @@ Page({
     user: null,
     menuitems: [
       { text: '个人信息', url: '../user_info/user_info', icon: '/images/tabbar/user.png', tips: '' },
-      { text: '我的上传', url: '../userinfo/userinfo', icon: '../../images/icon-index.png', tips: '' }
+      // { text: '我的上传', url: '../userinfo/userinfo', icon: '../../images/icon-index.png', tips: '' }
     ]
   },
 

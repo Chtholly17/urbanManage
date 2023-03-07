@@ -26,10 +26,10 @@
         </view>
     </view>
   </view>
-  <view class="form-group_label">
+  <!-- <view class="form-group_label">
     已完成
     <mp-badge content="{{finished.length}}" style="margin-left: 5px;" />
-  </view>
+  </view> -->
   <view class="form-group" wx:if="{{finished.length > 0}}">
     <view class="form-cell" wx:for="{{finished}}" wx:key="index">
       <mp-slideview buttons="{{[]}}" data-index='{{index}}' bindbuttontap="slideButtonTap">
