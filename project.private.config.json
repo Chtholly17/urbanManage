@@ -31,6 +31,7 @@
         },
         {
           "name": "",
+<<<<<<< HEAD
           "pathName": "pages/handprint/handprint",
           "query": "",
           "launchMode": "default",
@@ -45,6 +46,8 @@
         },
         {
           "name": "",
+=======
+>>>>>>> a3a92da4f7d0f1cf8f882fe0210bbb367fcc6778
           "pathName": "pages/add_space/add_space",
           "query": "",
           "launchMode": "default",

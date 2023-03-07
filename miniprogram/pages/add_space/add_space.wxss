@@ -77,3 +77,26 @@
   padding-top: 2vh;
   text-align: center;
 }
+
+.container1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150%;
+  height: 30rpx;
+  padding: 25rpx;
+  margin-bottom: 0rpx;
+}
+
+.text {
+  font-size: 30rpx;
+}
+
+.btn {
+  width: 100rpx;
+  height: 60rpx;
+  font-size: 24rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+}

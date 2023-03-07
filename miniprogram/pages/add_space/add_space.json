@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "上传空间"
+  "navigationBarTitleText": "上传空间",
+  "usingComponents": {
+    "wxml-to-canvas": "wxml-to-canvas"
+  }
 }
