@@ -47,15 +47,7 @@ Page({
             console.log('search failed')
           }
         })
-        this.mapCtx = wx.createMapContext('myMap')
-        wx.createSelectorQuery().in(this).select("#myCanvas").fields({
-          node: true,
-          size: true,
-        }).exec((res) =>{
-          const canvas = res[0].node
-          this.ctx = canvas.getContext('2d')
-          console.log(this.ctx)
-        })
+
       }
     })
 
@@ -80,12 +72,12 @@ Page({
       success: function (res) { 
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFiles = res.tempFiles
-        //console.log(tempFiles)
+        console.log(tempFiles)
         for (var i = 0; i < tempFiles.length; i=i+1) { 
-          //console.log(tempFiles[i].tempFilePath)
+          console.log(tempFiles[i].tempFilePath)
           let timestamp = (new Date()).valueOf()
           wx.cloud.uploadFile({ 
-            cloudPath: timestamp + '.png',
+            cloudPath: timestamp +i + '.png',
             filePath: tempFiles[i].tempFilePath,
             success: function (res) { 
               console.log(res)
@@ -178,6 +170,7 @@ Page({
   },
   
   async saveSpace() {
+    const db = await getApp().database()
     //对输入内容进行校验
     if(this.data.imgs.length<3){
       wx.showToast({
@@ -212,6 +205,15 @@ Page({
       return
     }
 
+    if(this.data.detailImg===''){
+      wx.showToast({
+        title: '请在地图中确定空间具体位置',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
+
     db.collection('space').add({
       data: {
         imgs: this.data.imgs,
@@ -220,7 +222,7 @@ Page({
         Area: this.data.Area,
         Community: this.data.Community,
         City: this.data.City,
-        detailImg: this.detailImg
+        detailImg: this.data.detailImg
       }
     })
 
@@ -231,55 +233,42 @@ Page({
 
   onSaveImage: function() {
     var that = this
-    wx.createSelectorQuery().select('#myMap').fields({
+    wx.createSelectorQuery().in(this).select("#myMap").fields({
       node: true,
       size: true,
-    }).exec((res) => {
-      console.log(res[0])
-      const canvasNode = res[0].node;
-      const canvasWidth = res[0].width;
-      const canvasHeight = res[0].height;
-    
-      wx.canvasGetImageData({
-        canvas: canvasNode,
-        x: 0,
-        y: 0,
-        width: canvasWidth,
-        height: canvasHeight,
-        success(res) {
-          const imageData = res.data;
-          const canvasImgData = that.ctx.createImageData(canvasWidth, canvasHeight);
-          canvasImgData.data.set(imageData);
-          that.ctx.putImageData(canvasImgData, 0, 0, 0, 0, canvasWidth, canvasHeight);
-          wx.canvasToTempFilePath({
-            canvasId: 'myCanvas1',
-            success: (res) => {
-              const tempFilePath = res.tempFilePath
-              let timestamp = (new Date()).valueOf()
-              wx.cloud.uploadFile({
-                cloudPath: timestamp + ".png",
-                filePath: tempFilePath,
-                success: (res) => {
-                  console.log(res.fileID)
-                  const fileId = res.fileID
-                  that.setData({
-                    detailImg: fileId
-                  })
-                },
-                fail: (err) => {
-                  console.error(err)
-                }
+    }).exec((res) =>{
+      console.log(res)
+      const width = res[0].width
+      const height = res[0].height
+      const mapCtx = wx.createMapContext('myMap')
+      mapCtx.getCenterLocation({
+        success: function(res){
+          const lat = res.latitude
+          const lon = res.longitude
+          mapCtx.getScale({
+            success:function(res){
+              const scale = res.scale
+              console.log('scale',scale)
+              console.log('h',height)
+              console.log('w',width)
+              const key = "3P4BZ-5PICV-QCWPH-U6X4R-RKDJK-HQFM5"
+              const _url = 'https://apis.map.qq.com/ws/staticmap/v2/?center=' + lat 
+                          + ',' + lon + '&zoom=18' +
+                          '&size=' + width + '*' + height
+                          + '&maptype=satellite'
+                          + '&key=' + key
+              that.setData({
+                detailImg: _url
               })
-            },
-            fail: (err) => {
-              console.error(err)
             }
           })
-        },fail: (err) => {
-          console.error(err)
+        },
+        fail: function(err){
+          console.log(err)
         }
-      });
+      }) 
     })
+    
   }
 
   // onUnload:function(){
