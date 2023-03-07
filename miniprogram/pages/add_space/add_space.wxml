@@ -38,12 +38,9 @@
         <button class="btn" bindtap="onSaveImage" type="default" size="mini"> 确定</button>
     </view>
     <view class="form-cell">
-<<<<<<< HEAD
-        <map class = 'map' id="myMap" longitude="{{longitude}}" latitude="{{latitude}}" style="width: 100%; height: 500rpx;">
-=======
+
       <canvas canvas-id="mcvs" type="2d" id="myCanvas" style="width: 100%; height: 500rpx;">
         <map class = 'map' id="myMap" longitude="{{longitude}}" latitude="{{latitude}}" style="width: 100%; height: 500rpx;">  
->>>>>>> 84df19248c5353235ee66ddf5db2f7d737da9c3d
         </map>
       </canvas>
     </view>
