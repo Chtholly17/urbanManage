@@ -223,12 +223,16 @@ Page({
         Community: this.data.Community,
         City: this.data.City,
         detailImg: this.data.detailImg
+      },
+      success: res =>{
+        const spaceId = res._id
+        wx.navigateTo({
+          url: '../',
+        })
       }
     })
 
-    wx.navigateBack({
-      delta: 0,
-    })
+    
   },
 
   onSaveImage: function() {
