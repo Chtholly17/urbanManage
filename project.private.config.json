@@ -27,6 +27,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/handprint/handprint",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/handprint-demo/handprint-demo",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

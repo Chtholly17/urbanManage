@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "使用Demo",
+  "usingComponents": {
+    "drawing-board": "../../components/drawing-board/index"
+  }
+}

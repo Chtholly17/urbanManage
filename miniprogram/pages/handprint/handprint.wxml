@@ -1,0 +1,7 @@
+<view class="page">
+<button bindtap="clearClick" type="primary" size="mini">clear</button>
+<button bindtap="saveClick" type="primary" size="mini">save</button>
+
+  <canvas class="canvas" canvas-id="sign" style="border: 1px solid; width:{{screen_width*375}}px; height:{{screen_height*1.21}}px" bindtouchmove="move" bindtouchstart="start" bindtouchend="end" bindtouchcancel="cancel" bindlongtap="tap" disable-scroll="true" binderror="error">
+  </canvas>
+</view>
