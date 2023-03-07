@@ -13,29 +13,10 @@ Page({
     City: "",
     longitude: 0,
     latitude: 0,
+    detailImg :""
   },
 
   async onLoad() {
-    // wx.getLocation({
-    //   type: 'wgs84',
-    //   success: (res) => {
-    //     console.log(res.longitude)
-    //     console.log(res.longitude)
-    //     this.setData({
-    //       latitude: res.latitude,
-    //       longitude: res.longitude,
-    //       markers: [{
-    //         id: 1,
-    //         latitude,
-    //         longitude,
-    //         title: '当前位置',
-    //         width: 30,
-    //         height: 30
-    //       }]
-    //     })
-    //     this.mapCtx = wx.createMapContext('myMap')
-    //   }
-    // })
     const db = await getApp().database()
     //查询当前用户的Community
     let openid = getApp().globalData.openid
@@ -67,6 +48,14 @@ Page({
           }
         })
         this.mapCtx = wx.createMapContext('myMap')
+        wx.createSelectorQuery().in(this).select("#myCanvas").fields({
+          node: true,
+          size: true,
+        }).exec((res) =>{
+          const canvas = res[0].node
+          this.ctx = canvas.getContext('2d')
+          console.log(this.ctx)
+        })
       }
     })
 
@@ -230,7 +219,8 @@ Page({
         Reason: this.data.Reason,
         Area: this.data.Area,
         Community: this.data.Community,
-        City: this.data.City
+        City: this.data.City,
+        detailImg: this.detailImg
       }
     })
 
@@ -238,6 +228,59 @@ Page({
       delta: 0,
     })
   },
+
+  onSaveImage: function() {
+    var that = this
+    wx.createSelectorQuery().select('#myMap').fields({
+      node: true,
+      size: true,
+    }).exec((res) => {
+      console.log(res[0])
+      const canvasNode = res[0].node;
+      const canvasWidth = res[0].width;
+      const canvasHeight = res[0].height;
+    
+      wx.canvasGetImageData({
+        canvas: canvasNode,
+        x: 0,
+        y: 0,
+        width: canvasWidth,
+        height: canvasHeight,
+        success(res) {
+          const imageData = res.data;
+          const canvasImgData = that.ctx.createImageData(canvasWidth, canvasHeight);
+          canvasImgData.data.set(imageData);
+          that.ctx.putImageData(canvasImgData, 0, 0, 0, 0, canvasWidth, canvasHeight);
+          wx.canvasToTempFilePath({
+            canvasId: 'myCanvas1',
+            success: (res) => {
+              const tempFilePath = res.tempFilePath
+              let timestamp = (new Date()).valueOf()
+              wx.cloud.uploadFile({
+                cloudPath: timestamp + ".png",
+                filePath: tempFilePath,
+                success: (res) => {
+                  console.log(res.fileID)
+                  const fileId = res.fileID
+                  that.setData({
+                    detailImg: fileId
+                  })
+                },
+                fail: (err) => {
+                  console.error(err)
+                }
+              })
+            },
+            fail: (err) => {
+              console.error(err)
+            }
+          })
+        },fail: (err) => {
+          console.error(err)
+        }
+      });
+    })
+  }
 
   // onUnload:function(){
   //   this.resetTodo()
