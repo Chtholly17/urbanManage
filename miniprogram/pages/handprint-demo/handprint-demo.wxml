@@ -34,6 +34,7 @@
   <view class="adjust-item-operation" bind:tap="touchRevoke">撤销</view>
   <!-- <view class="adjust-item-operation" bind:tap="touchCreateImage">生成图片</view> -->
   <view class="adjust-item-operation" bind:tap="touchSave">保存相册</view>
+  <view class="adjust-item-operation" bind:tap="touchConfirm">确定</view>
 </view>
 </view>
 

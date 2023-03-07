@@ -16,7 +16,8 @@ App({
       fileLimit: 3,
       userInfo: null,
       hasUserInfo: false,
-      openid: null
+      openid: null,
+      fileid:null
     }
     var that = this;
     wx.cloud.callFunction({

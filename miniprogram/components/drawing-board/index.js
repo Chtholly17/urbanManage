@@ -1,4 +1,5 @@
 // DZMDrawingBoard/index.js
+const app = getApp();
 Component({
 
   // 组件的属性列表
@@ -105,11 +106,14 @@ Component({
               filePath:imagePath,
               success(res) {
                 console.log(res)
+                app.globalData.fileid = res.fileID
+                console.log(app.globalData.fileid)
                 wx.hideLoading()
                 wx.showToast({
                   title:"上传成功！",
                   duration:2000
                 })
+                return res
               },
               fail(res) {
                 console.log(res)

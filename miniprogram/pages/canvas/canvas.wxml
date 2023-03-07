@@ -8,7 +8,7 @@
 <view class="container">
 <view class="list">
 <view class="image-container">
-<image src="https://apis.map.qq.com/ws/staticmap/v2/?center=24.493656641843053,118.12510694185653&zoom=18&size=358*285&key=3P4BZ-5PICV-QCWPH-U6X4R-RKDJK-HQFM5" mode="aspectFill"></image>
+<image src="{{img}}" mode="aspectFill"></image>
 </view>
 <!-- style="height: {{(9) * (drag.height)}}rpx;width: {{drag.outWidth}}rpx;" -->
   <movable-area class="moveList">

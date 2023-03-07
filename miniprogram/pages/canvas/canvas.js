@@ -60,6 +60,7 @@ var attr = {
     cost: 26,
     sat: 4.4
   },
+  img:undefined
 }
 Page({
   /**
@@ -217,7 +218,12 @@ Page({
     //#region 计算列表的坐标, 装着列表的数据,包含坐标
     this.countPosition()
     //#endregion
- 
+    var img = decodeURIComponent(options.str)
+    console.log(img)
+    this.setData({
+      img:img
+    })
+    
   },
  
   /**

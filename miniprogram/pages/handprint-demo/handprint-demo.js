@@ -54,11 +54,18 @@ Page({
       }
     })
   },
-
+  touchConfirm(){
+    var app = getApp()
+    console.log(app.globalData.fileid)
+    wx.navigateTo({
+      url: '../canvas/canvas?str=' + encodeURIComponent(app.globalData.fileid)
+    })
+  },
   // 保存相册
   touchSave () {
     // 记录图片并保存相册
-    this.data.drawingBoard.createImage((isOK, res) => {
+    var tmp = this.data.drawingBoard.createImage((isOK, res) => {
+      console.log(res)
       // 生成图片成功
       if (isOK) {
         this.setData({ imageUrl: res.tempFilePath || '' })
@@ -77,6 +84,7 @@ Page({
         })
       }
     })
+    console.log(tmp)
   },
 
   // 画板变化
