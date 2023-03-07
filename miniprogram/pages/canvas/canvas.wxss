@@ -12,6 +12,12 @@ page{
   border:solid 1px #dfdfdf;
   border-radius: 10rpx;
 }
+.bgimg{
+  width: 100%;
+  height: 500rpx;
+  /* z-index: 0; */
+  /* position: absolute; */
+} 
 
 .list {
   display: flex;
@@ -19,6 +25,9 @@ page{
 }
 .list .moveList {
   width: 100%;
+  height: 500rpx;
+  position: absolute;
+  z-index: 1;
 }
 .list .moveList .moveItem {
   display: flex;
@@ -54,7 +63,7 @@ page{
 
 /**图像**/
 .image{
-  width: 100rpx;
-  height: 100rpx;
+  width: 50rpx;
+  height: 50rpx;
   border: 1px solid green;
 }

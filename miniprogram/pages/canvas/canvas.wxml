@@ -6,7 +6,9 @@
   module.exports.parseIntNumber = parseIntNumber;
 </wxs>
 <view class="list">
-  <movable-area class="moveList" style="height: {{(9) * (drag.height)}}rpx;width: {{drag.outWidth}}rpx;">
+<image class="bgimg" src="../../images/map.jpg"></image>
+<!-- style="height: {{(9) * (drag.height)}}rpx;width: {{drag.outWidth}}rpx;" -->
+  <movable-area class="moveList">
     <movable-view wx:for="{{positionList}}" wx:key="id" out-of-bounds direction="all" style="height: {{drag.height}}rpx;width: calc({{drag.outWidth}}rpx / {{drag.countOneLine}});" class="moveItem" x="{{positionList[index].left}}rpx" y="{{positionList[index].boxTop}}rpx" bindchange="drag" bindtouchend="dragEnd" data-myindex="{{index}}">
       <!-- 蓝色边边的出现条件：当前轮到index这个索引显示了 且 当前拖动的元素的索引不是index -->
       <!-- <view class="icon">图标</view> -->

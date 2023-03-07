@@ -2,6 +2,7 @@
 
 <!-- 使用画板 -->
 <view class="drawing-board">
+  <image class="bgimg" src="../../images/map.jpg"></image>
   <drawing-board
     id="drawing-board"
     line-width="{{lineWidth}}"
@@ -10,6 +11,8 @@
     bind:change="drawingBoardChange"
   >
   </drawing-board>
+  
+  
 </view>
 
 <!-- 调整画板属性 - 线宽

@@ -55,7 +55,7 @@ Component({
         this.reloadCtxBG()
         // 绘图变化回调
         this.callback()
-        this.drawBG()
+        // this.drawBG()
       }
     },
     drawBG(){
@@ -158,7 +158,7 @@ Component({
         this.reloadCtx()
         // 清空画板
         this.clear()
-        this.drawBG()
+        // this.drawBG()
       })
     },
     // 手指触摸动作开始

@@ -83,9 +83,34 @@ Page({
     console.log('当前画板存在的笔画数：', e.detail.strokesNumber)
   },
 
-  getSpace:function(){
-  
-  }
+  // async getSpace(){
+  //   var that = this
+  //   const db = await getApp().database()
+  //   //查询当前用户的Community
+  //   let openid = getApp().globalData.openid
+  //   //console.log(openid)
+  //   //console.log(this.data.Reason)
+  //   db.collection('user').where({
+  //     _openid: openid
+  //   }).get({
+  //     success: res=> {
+  //       //console.log(that.data.Reason)
+  //       //console.log(res.data[0].Community)
+  //       that.setData({
+  //         Community: res.data[0].Community
+  //       })
+  //       db.collection('space').add({
+  //         data: {
+  //           imgs: that.data.imgs,
+  //           Location: this.data.Location,
+  //           Reason: that.data.Reason,
+  //           Area: that.data.Area,
+  //           Community: that.data.Community
+  //         }
+  //       })
+  //     }
+  //   })  
+  // },
   
   /**
    * 生命周期函数--监听页面初次渲染完成
