@@ -83,25 +83,27 @@ Page({
     console.log('当前画板存在的笔画数：', e.detail.strokesNumber)
   },
 
+  getSpace:function(){
+  
+  }
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
     this.data.drawingBoard = this.selectComponent('#drawing-board')
+    //this.data.drawingBoard.drawBG()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

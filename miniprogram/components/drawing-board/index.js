@@ -55,7 +55,15 @@ Component({
         this.reloadCtxBG()
         // 绘图变化回调
         this.callback()
+        this.drawBG()
       }
+    },
+    drawBG(){
+      let canvas = this.data.canvas
+      let ctx = this.data.ctx
+      const bg = canvas.createImage()
+      bg.src = "../../images/map.jpg" 
+      ctx.drawImage(bg, 0, 0, canvas.width, canvas.height)
     },
     // 撤回到上一个笔画
     revoke () {
@@ -89,10 +97,28 @@ Component({
             //     if (saveResult) { saveResult(false, err) }
             //   }
             // })
-            wx.saveFile({
-              tempFilePath: imagePath,
-              success(res){
-                if(saveResult) {saveResult(true, res)}
+            wx.showLoading({
+              title:"正在上传......"
+            })
+            wx.cloud.uploadFile({
+              cloudPath:"photo/"+Date.now()+".jpg",
+              filePath:imagePath,
+              success(res) {
+                console.log(res)
+                wx.hideLoading()
+                wx.showToast({
+                  title:"上传成功！",
+                  duration:2000
+                })
+              },
+              fail(res) {
+                console.log(res)
+                wx.hideLoading()
+                wx.showToast({
+                  title:"上传失败，请检查网络！",
+                  icon:"none",
+                  duration:2000
+                })
               }
             })
           }
@@ -103,8 +129,7 @@ Component({
         }
       })
     },
-
-
+    
     // ---------------------------- 私有方法 ----------------------------
 
     // 获取画板及上下文
@@ -133,6 +158,7 @@ Component({
         this.reloadCtx()
         // 清空画板
         this.clear()
+        this.drawBG()
       })
     },
     // 手指触摸动作开始
@@ -200,7 +226,7 @@ Component({
     },
     // 刷新上下文背景
     reloadCtxBG () {
-      if (this.data.ctx) {
+       if (this.data.ctx) {
         // 清空画板
         this.data.ctx.clearRect(0, 0, this.data.canvas.width, this.data.canvas.height)
         // 重新绘制画板背景
@@ -208,7 +234,7 @@ Component({
         let canvas = this.data.canvas
         ctx.fillStyle = this.data.bgColor
         ctx.fillRect(0, 0, canvas.width, canvas.height)
-      }
+       }
     },
     // 重新绘制 - 更具当前笔画记录进行重新绘制
     redraw () {
@@ -255,7 +281,6 @@ Component({
 
   // 组件生命周期函数 - 在组件布局完成后执行
   ready () {
-    // 获取画板及上下文
     this.getCanvas()
   },
 

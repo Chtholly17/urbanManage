@@ -4,7 +4,7 @@ page {
 }
 .drawing-board, .drawing-board-image {
   width: 100%;
-  height: 1000rpx;
+  height: 500rpx;
   background-color: white;
 }
 .drawing-board-image {
