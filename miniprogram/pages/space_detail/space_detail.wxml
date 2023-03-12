@@ -25,10 +25,11 @@
       <text> {{Area}}</text> 
     </view> 
   </view> 
- 
+  <view class="con">
+  <image class="my-image" src="../../images/space_detail/pic.jpg" mode="widthFix"></image>
   <view class="footer"> 
     <view class="reset" bindtap="returnToList">返回</view> 
     <view class="save" bindtap="modifySpace">修改</view> 
   </view> 
+  </view>
 </view>
- \ No newline at end of file 

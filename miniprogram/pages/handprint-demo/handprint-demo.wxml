@@ -2,6 +2,7 @@
 
 <!-- 使用画板 -->
 <view class="container">
+  <image class="bg-image" src="../../images/canvas/background.png"></image>
 <view class="drawing-board">
   <image class="bgimg" src="{{detailImg}}"></image>
   <drawing-board
@@ -38,13 +39,3 @@
 </view>
 </view>
 
-<!-- 调整画板属性 - 颜色
-<view class="adjust-item">
-  背景：
-  <view wx:for="{{['pink', 'rebeccapurple', '#000', 'yellowgreen', '#ccc']}}" class="adjust-item-stroke-color" data-color="{{item}}" style="background-color: {{item}};" bind:tap="bgColorChange"></view> -->
-  <!-- 透明 -->
-  <!-- <view class="adjust-item-stroke-color" data-color="rgba(255, 255, 255, 0)" style="background-color: rgba(255, 255, 255, 0); border: 1px solid gray;" bind:tap="bgColorChange"> 透明 </view>
-</view> -->
-
-<!-- 显示生成图片
-<image class="drawing-board-image" src="{{imageUrl}}" wx:if="{{imageUrl}}"></image> -->

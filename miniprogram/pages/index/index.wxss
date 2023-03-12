@@ -1,5 +1,9 @@
 /* miniprogram/pages/list/index.wxss */
 
+page{
+  background-color:rgb(232,242,231);
+}
+
 .container.empty {
   background: white;
 }

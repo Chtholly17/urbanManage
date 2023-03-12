@@ -1,0 +1,23 @@
+<!--pages/artical/artical.wxml-->
+
+<view class="container">
+  <image class="bg-image" src="../../images/artical/logo.png"></image>
+  <view class="content1">
+    <view class="app-name">“绿色”城市</view>
+  </view>
+  <view class="content2">
+    <button class="button" size="default" hover-class="onType" bindtap="onClick">进入</button>
+  </view>
+  <view class="content">
+    <view class="text">
+      让每一块被遗忘的城市肌理被赋予新的价值,
+    </view>
+    <view class="text1">
+      在城市细微处见质量、见情怀、见功夫，
+    </view>
+    <view>
+      旧址新城、生生不息。
+    </view>
+  </view>
+</view>
+
