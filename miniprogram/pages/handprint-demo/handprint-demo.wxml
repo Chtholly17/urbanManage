@@ -3,17 +3,12 @@
 <!-- 使用画板 -->
 <view class="container">
   <image class="bg-image" src="../../images/canvas/background.png"></image>
-<view class="drawing-board">
-  <image class="bgimg" src="{{detailImg}}"></image>
-  <drawing-board
-    id="drawing-board"
-    line-width="{{lineWidth}}"
-    line-color="{{lineColor}}"
-    bg-color="{{bgColor}}"
-    bind:change="drawingBoardChange"
-  >
-  </drawing-board>
-</view>
+  <view class="drawing-board">
+    <image class="bgimg" src="{{detailImg}}"></image>
+    <drawing-board id="drawing-board" line-width="{{lineWidth}}" line-color="{{lineColor}}" bg-color="{{bgColor}}"
+      bind:change="drawingBoardChange">
+    </drawing-board>
+  </view>
 
 <!-- 调整画板属性 - 线宽
 <view class="adjust-item">
@@ -30,12 +25,15 @@
 
 <!-- 调整画板属性 - 操作 -->
 <view class="adjust-item">
-  操作：
-  <view class="adjust-item-operation" bind:tap="touchClear">清空</view>
-  <view class="adjust-item-operation" bind:tap="touchRevoke">撤销</view>
-  <!-- <view class="adjust-item-operation" bind:tap="touchCreateImage">生成图片</view> -->
-  <view class="adjust-item-operation" bind:tap="touchSave">保存相册</view>
-  <view class="adjust-item-operation" bind:tap="touchConfirm">确定</view>
-</view>
+    <view class="optionsBox">
+      <view class="adjust-item-operation" bind:tap="touchClear">清空</view>
+      <view class="adjust-item-operation" bind:tap="touchRevoke">撤销</view>
+
+      <!-- <view class="adjust-item-operation" bind:tap="touchCreateImage">生成图片</view> -->
+
+      <view class="adjust-item-operation" bind:tap="touchSave">保存相册</view>
+      <view class="adjust-item-operation" bind:tap="touchConfirm">确定</view>
+    </view>
+  </view>
 </view>
 

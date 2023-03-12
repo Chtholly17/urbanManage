@@ -54,12 +54,12 @@
 
 .reset {
   color: white;
-  background: #353535;
+  background-color: rgb(47,124,50) !important;
 }
 
 .save {
   color: black;
-  background: white
+  background-color: rgb(125, 179, 68) !important;
 }
 
 .footer {

@@ -1,38 +1,120 @@
 <!-- index.html -->
-  <wxs module="m1">
+<wxs module="m1">
   var parseIntNumber = function (num) {
-    return parseInt(num)
+  return parseInt(num)
   }
   module.exports.parseIntNumber = parseIntNumber;
 </wxs>
 <view class="container">
-<view class="list">
-<view class="image-container">
-<image src="{{img}}" mode="aspectFill"></image>
-</view>
-<!-- style="height: {{(9) * (drag.height)}}rpx;width: {{drag.outWidth}}rpx;" -->
-  <movable-area class="moveList">
-    <movable-view wx:for="{{positionList}}" wx:key="id" out-of-bounds direction="all" style="height: {{drag.height}}rpx;width: calc({{drag.outWidth}}rpx / {{drag.countOneLine}});" class="moveItem" x="{{positionList[index].left}}rpx" y="{{positionList[index].boxTop}}rpx" bindchange="drag" bindtouchend="dragEnd" data-myindex="{{index}}">
-      <!-- 蓝色边边的出现条件：当前轮到index这个索引显示了 且 当前拖动的元素的索引不是index -->
-      <!-- <view class="icon">图标</view> -->
-      <view class="imageCon">
-        <image class="image" mode="aspectFit" src="{{positionList[index].img}}"></image>
+  <view class="list">
+    <view class="image-container">
+      <image src="../../images/map.jpg" mode="aspectFill"></image>
+    </view>
+    <!-- style="height: {{(9) * (drag.height)}}rpx;width: {{drag.outWidth}}rpx;" -->
+    <movable-area class="moveList">
+      <movable-view wx:for="{{positionList}}" wx:key="id" out-of-bounds direction="all"
+        style="height: {{drag.height}}rpx;width: calc({{drag.outWidth}}rpx / {{drag.countOneLine}});" class="moveItem"
+        x="{{positionList[index].left}}rpx" y="{{positionList[index].boxTop}}rpx" bindchange="drag"
+        bindtouchend="dragEnd" data-myindex="{{index}}">
+        <!-- 蓝色边边的出现条件：当前轮到index这个索引显示了 且 当前拖动的元素的索引不是index -->
+        <!-- <view class="icon">图标</view> -->
+        <view class="imageCon">
+          <image class="image" mode="aspectFit" src="{{positionList[index].img}}"></image>
+        </view>
+        <view class="name">{{item.name}}</view>
+      </movable-view>
+    </movable-area>
+  </view>
+
+  <!-- <view class="add">
+    <input class="input" placeholder="请输入名称" bindinput="onInput" />
+    <br></br>
+    <button class="btn" bindtap="onClick">添加</button>
+  </view> -->
+
+  <view class="canshu">
+    <view class="detail">
+      <view> 预算： {{total_carbon}} 元
       </view>
-      <view class="name">{{item.name}}</view>
-    </movable-view>
-  </movable-area>
-</view>
+      <view> 碳排放：{{total_cost}} 千克 </view>
+    </view>
+    <view class="detail">
+      <view> 居民满意度：{{total_sat}}
+      </view>
+      <view> 总分：{{score}}
+      </view>
+    </view>
+  </view>
+  <view class="hint">类别列表</view>
+  <!-- 一级 -->
+  <view wx:for="{{listType}}" wx:for-item='item' wx:for-index="index" wx:key='*this' class="detail-item"
+    bindtap="showType" data-name="{{item.name}}">
+    {{item.name}}
+    <!-- 二级 -->
+    <view class="{{!item.showEr ?'is-none':''}}" style="position:absolute;top:24px;z-index:9;left: 0;">
+      <view wx:for="{{item.arr}}" wx:for-item='ite' wx:for-index="inde" wx:key='*this' bindtap="showType"
+        data-name="{{ite.name}}" data-index="{{index}}" class="'detail-item'">{{ite.name}}
+        <!-- 三级 -->
+        <view class="{{!item.showSn ?'is-none':''}}" style="position:absolute;top:24px;z-index:12;left:0;">
+          <view wx:for="{{ite.arr}}" wx:for-item='it' wx:for-index="ine" wx:key='*this' bindtap="onClick"
+            data-name="{{it.name}}" data-index="{{inde}}" class="'detail-item'">{{it.name}}<view class="leixing">类型：
+              <view style="    color: #61B34D;font-weight:bold;display: inline-block;">
+                {{it.type}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 2 -->
+  <view style="margin-top:400rpx;height:2rpx;width: 100%;" wx:if="{{listType[listType.length-1].showSn}}"></view>
+  <view style="margin-top:400rpx;height:2rpx;width: 100%;" wx:if="{{listType[0].showSn}}"></view>
 
-<view class="add">
-  <input class="input" placeholder="请输入名称" bindinput="onInput"/>
-  <br></br>
-  <button class="btn" bindtap="onClick">添加</button>
-</view>
+  <view class="hint">类别列表</view>
+  <!-- 一级 -->
+  <view wx:for="{{listType1}}" wx:for-item='item' wx:for-index="index" wx:key='*this' class="detail-item"
+    bindtap="showType" data-name="{{item.name}}">
+    {{item.name}}
+    <!-- 二级 -->
+    <view class="{{!item.showEr ?'is-none':''}}" style="position:absolute;top:24px;z-index:9;left: 0;">
+      <view wx:for="{{item.arr}}" wx:for-item='ite' wx:for-index="inde" wx:key='*this' bindtap="showType"
+        data-name="{{ite.name}}" data-index="{{index}}" class="'detail-item'">{{ite.name}}
+        <!-- 三级 -->
+        <view class="{{!item.showSn ?'is-none':''}}" style="position:absolute;top:24px;z-index:9;left: 0;">
+          <view wx:for="{{ite.arr}}" wx:for-item='it' wx:for-index="ine" wx:key='*this' bindtap="onClick"
+            data-name="{{it.name}}" data-index="{{inde}}" class="'detail-item'">{{it.name}}<view class="leixing">类型：
+              <view style="    color: #61B34D;font-weight:bold;display: inline-block;">
+                {{it.type}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
 
-<view>
-  <view> 预算：{{total_carbon}} 元 </view> 
-  <view> 碳排放：{{total_cost}} 千克 </view> 
-  <view> 居民满意度：{{total_sat}} </view> 
-  <view> 总分：{{score}} </view> 
-</view>
+  <view class="{{!show ?'is-none':''}}" style="margin-top:-46rpx;">
+    <view wx:for="{{listOne}}" wx:for-item='item' wx:for-index="index" wx:key='*this' class="detail-item"
+      bindtap="onClick" data-name="{{item.name}}">
+      {{item.name}} <view class="leixing">类型： <view style="    color: #61B34D;font-weight:bold;display: inline-block;">
+          {{item.type}}</view>
+      </view>
+    </view>
+
+    <!-- </view>
+    </view> -->
+  </view>
+  <view class="{{!show1 ?'is-none':''}}">
+    <view wx:for="{{listTwo}}" wx:for-item='item' wx:for-index="index" wx:key='*this' class="detail-item"
+      bindtap="onClick" data-name="{{item.name}}">
+      {{item.name}} <view class="leixing">类型： <view style="    color: #61B34D;font-weight:bold;display: inline-block;">
+          {{item.type}}</view>
+      </view>
+    </view>
+    <view style="margin-top:400rpx;height:2rpx;width: 100%;" wx:if="{{listType1[listType.length-1].showSn}}"></view>
+    <view style="margin-top:400rpx;height:2rpx;width: 100%;" wx:if="{{listType1[listType.length-1].showEr}}"></view>
+
+    <view style="margin-top:400rpx;height:2rpx;width: 100%;" wx:if="{{listType1[0].showSn}}"></view>
+    <!-- </view>
+    </view> -->
+  </view>
 </view>

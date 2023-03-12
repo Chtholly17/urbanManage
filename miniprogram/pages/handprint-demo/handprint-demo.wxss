@@ -3,28 +3,36 @@ page {
   overflow-y: hidden;
 }
 
-.drawing-board, .drawing-board-image {
+.drawing-board,
+.drawing-board-image {
   width: 100%;
   height: 500rpx;
   background-color: white;
   z-index: 2;
   /* position: absolute; */
 }
+
 .drawing-board-image {
   margin-top: 10rpx;
   background-color: white;
   width: 100%;
   height: 200rpx;
 }
+
 .adjust-item {
   white-space: nowrap;
   display: flex;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
 }
+
 .adjust-item slider {
   width: 65%;
   display: inline-block;
 }
+
 .adjust-item-stroke-color {
   margin-left: 14rpx;
   width: 100rpx;
@@ -32,36 +40,40 @@ page {
   line-height: 100rpx;
   text-align: center;
 }
+
 .adjust-item-operation {
-  padding: 30rpx 20rpx;
-  color: blue;
+  color: #fff; 
+  background-color: rgb(47, 124, 50) !important;
+  width: 140rpx;
+  height: 61rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+  font-size: 27rpx;
 }
 
-.bgimg{
+.bgimg {
   width: 100%;
   height: 500rpx;
   z-index: 0;
   position: absolute;
 }
 
+.optionsBox {
+  display: flex;
+  width: 651rpx;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
 
-.content {
-  background-color: rgba(255, 255, 255);
-  padding: 30rpx;
-  border-radius: 40rpx;
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 600rpx;
-  text-align: center;
-  box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.3);
+.container {
+  padding: 20rpx;
 }
 
 .bg-image {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -1;
-}
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+  }
