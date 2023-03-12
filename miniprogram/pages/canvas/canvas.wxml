@@ -49,72 +49,21 @@
   <!-- 一级 -->
   <view wx:for="{{listType}}" wx:for-item='item' wx:for-index="index" wx:key='*this' class="detail-item"
     bindtap="showType" data-name="{{item.name}}">
-    {{item.name}}
+    <!-- 公益类 -->
+    {{item.name}} 
     <!-- 二级 -->
     <view class="{{!item.showEr ?'is-none':''}}" style="position:absolute;top:24px;z-index:9;left: 0;">
       <view wx:for="{{item.arr}}" wx:for-item='ite' wx:for-index="inde" wx:key='*this' bindtap="showType"
-        data-name="{{ite.name}}" data-index="{{index}}" class="'detail-item'">{{ite.name}}
+        data-name="{{ite.name}}" data-index="{{index}}" class="'detail-item'">
+        <!-- 图书角 -->
+        {{ite.name}}
         <!-- 三级 -->
-        <view class="{{!item.showSn ?'is-none':''}}" style="position:absolute;top:24px;z-index:12;left:0;">
+        <view class="{{!ite.showSn ?'is-none':''}}" style="position:absolute;top:24px;z-index:12;left:0;">
           <view wx:for="{{ite.arr}}" wx:for-item='it' wx:for-index="ine" wx:key='*this' bindtap="onClick"
-            data-name="{{it.name}}" data-index="{{inde}}" class="'detail-item'">{{it.name}}<view class="leixing">类型：
-              <view style="    color: #61B34D;font-weight:bold;display: inline-block;">
-                {{it.type}}</view>
-            </view>
+            data-name="{{it.name}}" data-index="{{inde}}" class="'detail-item'">{{it.name}}
           </view>
         </view>
       </view>
     </view>
-  </view>
-  <!-- 2 -->
-  <view style="margin-top:400rpx;height:2rpx;width: 100%;" wx:if="{{listType[listType.length-1].showSn}}"></view>
-  <view style="margin-top:400rpx;height:2rpx;width: 100%;" wx:if="{{listType[0].showSn}}"></view>
-
-  <view class="hint">类别列表</view>
-  <!-- 一级 -->
-  <view wx:for="{{listType1}}" wx:for-item='item' wx:for-index="index" wx:key='*this' class="detail-item"
-    bindtap="showType" data-name="{{item.name}}">
-    {{item.name}}
-    <!-- 二级 -->
-    <view class="{{!item.showEr ?'is-none':''}}" style="position:absolute;top:24px;z-index:9;left: 0;">
-      <view wx:for="{{item.arr}}" wx:for-item='ite' wx:for-index="inde" wx:key='*this' bindtap="showType"
-        data-name="{{ite.name}}" data-index="{{index}}" class="'detail-item'">{{ite.name}}
-        <!-- 三级 -->
-        <view class="{{!item.showSn ?'is-none':''}}" style="position:absolute;top:24px;z-index:9;left: 0;">
-          <view wx:for="{{ite.arr}}" wx:for-item='it' wx:for-index="ine" wx:key='*this' bindtap="onClick"
-            data-name="{{it.name}}" data-index="{{inde}}" class="'detail-item'">{{it.name}}<view class="leixing">类型：
-              <view style="    color: #61B34D;font-weight:bold;display: inline-block;">
-                {{it.type}}</view>
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
-  </view>
-
-  <view class="{{!show ?'is-none':''}}" style="margin-top:-46rpx;">
-    <view wx:for="{{listOne}}" wx:for-item='item' wx:for-index="index" wx:key='*this' class="detail-item"
-      bindtap="onClick" data-name="{{item.name}}">
-      {{item.name}} <view class="leixing">类型： <view style="    color: #61B34D;font-weight:bold;display: inline-block;">
-          {{item.type}}</view>
-      </view>
-    </view>
-
-    <!-- </view>
-    </view> -->
-  </view>
-  <view class="{{!show1 ?'is-none':''}}">
-    <view wx:for="{{listTwo}}" wx:for-item='item' wx:for-index="index" wx:key='*this' class="detail-item"
-      bindtap="onClick" data-name="{{item.name}}">
-      {{item.name}} <view class="leixing">类型： <view style="    color: #61B34D;font-weight:bold;display: inline-block;">
-          {{item.type}}</view>
-      </view>
-    </view>
-    <view style="margin-top:400rpx;height:2rpx;width: 100%;" wx:if="{{listType1[listType.length-1].showSn}}"></view>
-    <view style="margin-top:400rpx;height:2rpx;width: 100%;" wx:if="{{listType1[listType.length-1].showEr}}"></view>
-
-    <view style="margin-top:400rpx;height:2rpx;width: 100%;" wx:if="{{listType1[0].showSn}}"></view>
-    <!-- </view>
-    </view> -->
   </view>
 </view>
