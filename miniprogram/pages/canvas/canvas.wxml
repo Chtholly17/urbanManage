@@ -8,7 +8,7 @@
 <view class="container">
   <view class="list">
     <view class="image-container">
-      <image src="../../images/map.jpg" mode="aspectFill"></image>
+      <image src="{{img}}" mode="aspectFill"></image>
     </view>
     <!-- style="height: {{(9) * (drag.height)}}rpx;width: {{drag.outWidth}}rpx;" -->
     <movable-area class="moveList">
