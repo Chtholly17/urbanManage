@@ -4,7 +4,7 @@
         <view class="avator">
           <image style="border-radius: 50%; width: 233rpx; height: 204rpx; display: inline-block; box-sizing: border-box; position: relative; left: 259rpx; top: 9rpx" src="/images/tabbar/user.png" mode="cover"></image>
         </view>
-        <button class="login-button head-height" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登陆/注册 </button>
+        <button class="login-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登陆/注册 </button>
       </block>
       <block wx:else>
         <view class="userinfo">

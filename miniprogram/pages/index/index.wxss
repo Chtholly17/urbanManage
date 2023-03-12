@@ -30,6 +30,7 @@ page{
 
 .form-cell {
   padding: 0;
+  border-radius: 20px;
 }
 
 .slide {
@@ -37,6 +38,8 @@ page{
   align-items: center;
   padding: 20px;
   position: relative;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .checkbox {
@@ -87,4 +90,20 @@ page{
 .todo-info_title.done {
   text-decoration: line-through;
   color: #8D8D8D;
+}
+
+.divLine{
+  background: rgb(232,242,231);
+  height: 30px;
+}
+
+.divLine1{
+  background: #fff;
+  height: 15px;
+  border-radius: 20px;
+}
+
+.divLine2{
+  background: #fff;
+  height: 10px;
 }

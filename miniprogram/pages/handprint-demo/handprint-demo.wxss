@@ -3,6 +3,8 @@ page {
   overflow-y: hidden;
 }
 
+
+
 .drawing-board,
 .drawing-board-image {
   width: 100%;

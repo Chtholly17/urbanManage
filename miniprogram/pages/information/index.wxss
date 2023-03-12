@@ -1,3 +1,7 @@
+page{
+  background-color:rgb(232,242,231);
+}
+
 .form-cell_title {
   margin-bottom: 10px;
   font-size: medium;
@@ -45,13 +49,14 @@
   text-align: center;
 }
 
-.reset {
-  background: white;
-}
-
-.save {
-  color: white;
-  background: #353535;
-}
+.save { 
+  color: white; 
+  background:rgb(47,124,50); 
+} 
+ 
+.reset { 
+  color: white; 
+  background: rgb(125,179,68)
+} 
 
 /* information wxss*/

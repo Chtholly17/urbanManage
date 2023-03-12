@@ -21,9 +21,8 @@
             <view class="todo-info_title">上传原因: {{util.filterStr(item.Reason, 10)}}</view>
             <view class="todo-info_title">面积: {{util.filterStr(item.Area, 10)}}</view>
           </view>
-          <image wx:if="{{item.star}}" class="star" src="../../images/file/star.png" />
-          <image wx:if="{{item.files.length > 0}}" data-index='{{index}}' class="file" src="../../images/file/file.png" catchtap="toFileList" />
         </view>
+        <view class="divLine"></view>
     </view>
   </view>
   <!-- <view class="form-group_label">

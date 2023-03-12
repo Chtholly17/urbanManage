@@ -52,18 +52,23 @@
     <!-- 公益类 -->
     {{item.name}} 
     <!-- 二级 -->
-    <view class="{{!item.showEr ?'is-none':''}}" style="position:absolute;top:24px;z-index:9;left: 0;">
+    <view class="{{!item.showEr ?'is-none':''}}" style="position:absolute;top:35px;z-index:9;left: 0;">
       <view wx:for="{{item.arr}}" wx:for-item='ite' wx:for-index="inde" wx:key='*this' bindtap="showType"
-        data-name="{{ite.name}}" data-index="{{index}}" class="'detail-item'">
+        data-name="{{ite.name}}" data-index="{{index}}" class="'detail-item1'">
         <!-- 图书角 -->
         {{ite.name}}
         <!-- 三级 -->
-        <view class="{{!ite.showSn ?'is-none':''}}" style="position:absolute;top:24px;z-index:12;left:0;">
+        <view class="{{!ite.showSn ?'is-none':''}}" style="position:absolute;top:35px;z-index:12;left:0;">
           <view wx:for="{{ite.arr}}" wx:for-item='it' wx:for-index="ine" wx:key='*this' bindtap="onClick"
-            data-name="{{it.name}}" data-index="{{inde}}" class="'detail-item'">{{it.name}}
+            data-name="{{it.name}}" data-index="{{inde}}" class="'detail-item2'">{{it.name}}
           </view>
         </view>
       </view>
     </view>
+  </view>
+</view>
+<view>
+  <view class="footer">
+      <view class="save" bindtap="saveInfo">保存</view>
   </view>
 </view>

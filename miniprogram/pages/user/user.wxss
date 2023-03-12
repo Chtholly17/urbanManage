@@ -1,3 +1,7 @@
+page{
+  background-color:rgb(232,242,231);
+}
+
 .container{
   margin:5rpx
 }
@@ -8,12 +12,15 @@
     vertical-align: center; /**垂直居中*/
     justify-content: center; /**内容居中*/
     flex-direction:row; 
-    height: 500rpx;
+    height:300rpx;
     width: 270rpx;
+    background-color: rgb(232,242,231);
 }
 
 .userinfo{
   display: flex;
+  background-color: rgb(232,242,231);
+  color: rgb(232,242,231);
 }
 
 view{
@@ -83,12 +90,13 @@ textarea{
 
 /* pages/user/user.wxss */
 .avatar-wrapper {
-  background: #f6f6f6;
+  background: rgb(232,242,231);
   padding: 25px 0;
 }
 .avatar-wrapper .avatar {
   margin: 0 auto;
   text-align: center;
+  background-color: rgb(232,242,231);
 }
 .avatar-wrapper .avatar image {
   margin-right: 5px;
@@ -98,7 +106,12 @@ textarea{
 }
 .avatar-wrapper .text {
   text-align: center;
-  color: #fff;
+  
+  color: #000;
+}
+
+.avator{
+  background-color: rgb(232,242,231);
 }
 .listimg image {
   margin-right: 5px;
@@ -124,4 +137,10 @@ textarea{
   margin-left: 500rpx;
 }
 /* user.wxss */
+.mine-wrapper{
+  background-color: rgb(232,242,231);
+}
 
+.login-button{
+  background-color: rgb(232,242,231);
+}

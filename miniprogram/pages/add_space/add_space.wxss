@@ -1,4 +1,7 @@
 /* pages/add_space/add_space.wxss */
+page{
+  background-color:rgb(232,242,231);
+}
 
 .wrap { 
    
@@ -52,12 +55,12 @@
   right: -12rpx;
 }
 
-.reset {
+.save {
   color: white;
   background-color: rgb(47,124,50) !important;
 }
 
-.save {
+.reset {
   color: black;
   background-color: rgb(125, 179, 68) !important;
 }

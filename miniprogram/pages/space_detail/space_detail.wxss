@@ -2,6 +2,10 @@
 
 /* pages/add_space/add_space.wxss */ 
  
+page{
+  background-color:rgb(232,242,231);
+}
+
 .wrap {  
     
   width: 100%; 
@@ -54,14 +58,14 @@
   right: -12rpx; 
 } 
  
-.reset { 
+.save { 
   color: white; 
-  background: #353535; 
+  background:rgb(47,124,50); 
 } 
  
-.save { 
-  color: black; 
-  background: white 
+.reset { 
+  color: white; 
+  background: rgb(125,179,68)
 } 
  
 .footer { 

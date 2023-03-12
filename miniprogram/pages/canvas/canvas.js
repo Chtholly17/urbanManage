@@ -548,5 +548,10 @@ Page({
      */
     onShareAppMessage() {
 
+    },
+    saveInfo(){
+      wx.switchTab({
+        url: '../index/index',
+      })
     }
 })
