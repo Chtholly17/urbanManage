@@ -1,7 +1,7 @@
 <!--pages/artical/artical.wxml-->
 
 <view class="container">
-  <image class="bg-image" src="../../images/artical/logo.png"></image>
+  <image class="bg-image" src="cloud://cloud0-8go53ury73450b9e.636c-cloud0-8go53ury73450b9e-1314142774/logo.png"></image>
   <view class="content1">
     <view class="app-name">“绿色”城市</view>
   </view>
