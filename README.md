@@ -1,2 +1,2 @@
 # urbanManage
-Community manage system for course design of Database Principle course of Tongji University 
+A urban space manage system, based on wechat miniprogram
